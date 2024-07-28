@@ -15,17 +15,39 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+  return view('welcome');
+})->name("home");
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('dashboard', function () {
+  return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// Candidate
+Route::prefix("candidate")->as("candidate.")->middleware(["auth", "verified", "role:candidate"])->group(function () {
+  Route::get('dashboard', function () {
+    return view('frontend.candidate-dashboard.dashboard');
+  })->name('dashboard');
 });
 
-require __DIR__.'/auth.php';
+// Company
+Route::prefix("company")->as("company.")->middleware(["auth", "verified", "role:company"])->group(function () {
+  Route::get('dashboard', function () {
+    return view('frontend.company-dashboard.dashboard');
+  })->name('dashboard');
+});
+
+Route::middleware('auth')->group(function () {
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::get("admin", function () {
+  return redirect()->route("admin.login");
+});
+
+Route::fallback(function () {
+  return redirect()->route('home');
+});
+
+require __DIR__ . '/auth.php';
