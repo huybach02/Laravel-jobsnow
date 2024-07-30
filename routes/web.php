@@ -42,10 +42,6 @@ Route::middleware('auth')->group(function () {
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get("admin", function () {
-  return redirect()->route("admin.login");
-});
-
 Route::fallback(function () {
   return redirect()->route('home');
 });

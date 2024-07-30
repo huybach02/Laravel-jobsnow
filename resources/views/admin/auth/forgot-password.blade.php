@@ -1,27 +1,41 @@
-<x-guest-layout>
-    <h1>ADMIN FORGOT PASSWORD</h1>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('admin.auth.layouts.auth-master')
+
+@section('content')
+    <div class="authentication d-flex align-items-center justify-content-center px-3 px-lg-0 py-5 py-lg-0">
+        <div class="bg-white w-md-25 rounded">
+            <div class="card w-100 px-5">
+                <h3 class="l-login p-0">Quên mật khẩu</h3>
+                <p>Vui lòng nhập email đã đăng ký tài khoản trước đó.
+                    <br>Hệ thống sẽ gửi một đường dẫn khôi phục mật khẩu đến
+                    email này.
+                </p>
+                <form id="sign_in" method="POST" action="{{ route('admin.password.email') }}" class="row mt-4">
+                    @csrf
+
+                    <!-- Email Address -->
+                    <div class="col-12 p-0">
+                        <b>Email</b>
+                        <div class="input-group d-flex flex-column">
+                            <div class="form-line {{ $errors->has('email') ? 'error focused' : '' }}">
+                                <input type="text" class="form-control" placeholder="Nhập email của bạn" name="email"
+                                    value="{{ old('email') }}">
+                            </div>
+                            @if ($errors->has('email'))
+                                <small class="text-danger">{{ $errors->first('email') }}</small>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <a href="{{ route('admin.login') }}" class="btn btn-raised bg-grey waves-effect mr-3">Quay
+                            lại
+                            đăng nhập</a>
+                        <button type="submit" class="btn btn-raised g-bg-blue waves-effect">Xác nhận</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div id="instance1"></div>
     </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('admin.password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection

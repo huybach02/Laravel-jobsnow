@@ -1,0 +1,7 @@
+.logo-sidebar {
+    margin-left: 40px;
+    width: 140px;
+}
+.ls-closed .bars:before {
+    margin-top: 5px;
+}

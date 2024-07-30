@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,11 +26,17 @@ class AuthenticatedSessionController extends Controller
    */
   public function store(LoginRequest $request): RedirectResponse
   {
-    $request->authenticate("admin");
+    $remember = $request->boolean('remember');
+
+    $check = $request->authenticate("admin", $remember);
+
+    if (!$check) {
+      return redirect()->back()->with('error', 'Thông tin đăng nhập không chính xác');
+    }
 
     $request->session()->regenerate();
 
-    return redirect()->route("admin.dashboard");
+    return redirect()->route("admin.dashboard")->with('success', 'Đăng nhập thành công');
   }
 
   /**

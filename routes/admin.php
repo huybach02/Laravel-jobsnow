@@ -9,59 +9,39 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix("admin")->as("admin.")->middleware('guest:admin')->group(function () {
-  // Route::get('register', [RegisteredUserController::class, 'create'])
-  //   ->name('register');
-
-  // Route::post('register', [RegisteredUserController::class, 'store']);
-
-  Route::get('login', [AuthenticatedSessionController::class, 'create'])
-    ->name('login');
-
-  Route::post('login', [AuthenticatedSessionController::class, 'store']);
-
-  Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-    ->name('password.request');
-
-  Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-    ->name('password.email');
-
-  Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-    ->name('password.reset');
-
-  Route::post('reset-password', [NewPasswordController::class, 'store'])
-    ->name('password.store');
-
-  Route::fallback(function () {
-    return redirect()->route('admin.login');
+Route::prefix('admin')->as('admin.')->group(function () {
+  Route::get("/", function () {
+    return redirect()->route("admin.login");
   });
-});
+  Route::middleware('guest:admin')->group(function () {
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-Route::prefix("admin")->as("admin.")->middleware('auth:admin')->group(function () {
-  Route::get('verify-email', EmailVerificationPromptController::class)
-    ->name('verification.notice');
+    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
 
-  Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
-    ->middleware(['signed', 'throttle:6,1'])
-    ->name('verification.verify');
+    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+    Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
 
-  Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
-    ->middleware('throttle:6,1')
-    ->name('verification.send');
+    Route::fallback(function () {
+      return redirect()->route('admin.login');
+    });
+  });
 
-  Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
-    ->name('password.confirm');
+  Route::middleware('auth:admin')->group(function () {
+    Route::get('verify-email', EmailVerificationPromptController::class)->name('verification.notice');
+    Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)->middleware(['signed', 'throttle:6,1'])->name('verification.verify');
+    Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->middleware('throttle:6,1')->name('verification.send');
 
-  Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
+    Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
+    Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-  Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-  Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->name('logout');
-
-  Route::get("dashboard", function () {
-    return view("admin.dashboard.index");
-  })->name("dashboard");
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+  });
 });
