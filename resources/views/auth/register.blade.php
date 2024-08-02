@@ -70,7 +70,8 @@
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="input-1">Họ và tên *</label>
+                                        <label class="form-label" for="input-1">Tên người ứng tuyển / Tên doanh nghiệp
+                                            *</label>
                                         <input class="form-control" id="input-1" type="text" name="name"
                                             placeholder="Nguyễn Văn A" value="{{ old('name') }}">
                                         @if ($errors->has('name'))

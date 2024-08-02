@@ -14,3 +14,7 @@
 <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
 <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
+<script src="{{ asset('frontend/assets/tinymce/tinymce.min.js') }}"></script>
+
+{{-- <script src="https://cdn.tiny.cloud/1/of7awl7i3yrx0uncfwivkiru4ocgevm8h6zkg9hkc3j5tlbn/tinymce/7/tinymce.min.js"
+    referrerpolicy="origin"></script> --}}

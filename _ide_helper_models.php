@@ -49,6 +49,77 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $user_id
+ * @property string|null $name
+ * @property string|null $slug
+ * @property int|null $industry_type_id
+ * @property int|null $organization_type_id
+ * @property int|null $team_size_id
+ * @property string|null $logo
+ * @property string|null $banner
+ * @property string|null $established_date
+ * @property string|null $bio
+ * @property string|null $vision
+ * @property int|null $total_views
+ * @property string|null $address
+ * @property string|null $province_city
+ * @property string|null $district
+ * @property string|null $commune_ward
+ * @property string|null $phone
+ * @property string|null $email
+ * @property string|null $map_link
+ * @property string|null $tax_code
+ * @property int $is_profile_verified
+ * @property int|null $document_verified_at
+ * @property int $profile_completed
+ * @property int $visibility
+ * @property int $status
+ * @property string|null $fb_link
+ * @property string|null $website_link
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereBanner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereBio($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereCommuneWard($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereDistrict($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereDocumentVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereEstablishedDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereFbLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereIndustryTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereIsProfileVerified($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereMapLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereOrganizationTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereProfileCompleted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereProvinceCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereTaxCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereTeamSizeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereTotalViews($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereVisibility($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereVision($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereWebsiteLink($value)
+ */
+	class Company extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $image
  * @property string $email
