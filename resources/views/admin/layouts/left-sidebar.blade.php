@@ -23,13 +23,23 @@
             <li class="active open"> <a href="{{ route('admin.dashboard') }}"><i
                         class="zmdi zmdi-view-dashboard"></i><span class="font-bold">Thống
                         Kê</span> </a>
-            <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span
+            <li> <a href="javascript:void(0);" class="menu-toggle d-flex align-items-center">
+                    <i class="zmdi zmdi-layers"></i>
+                    <span class="font-bold">QL Thông Tin Tổ Chức</span>
+                </a>
+                <ul class="ml-menu">
+                    <li> <a href="{{ route('admin.industry-types.index') }}">Lĩnh vực hoạt động</a></li>
+                    <li> <a href="more-widgets.html">Loại hình tổ chức</a></li>
+                    <li> <a href="more-widgets.html">Quy mô tổ chức</a></li>
+                </ul>
+            </li>
+            {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span
                         class="font-bold">Widgets</span> </a>
                 <ul class="ml-menu">
                     <li> <a href="basic.html">Basic</a></li>
                     <li> <a href="more-widgets.html">More Widgets</a></li>
                 </ul>
-            </li>
+            </li> --}}
             {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-trending-down"></i><span>Multi
                         Level Menu</span> </a>
                 <ul class="ml-menu">

@@ -14,3 +14,12 @@
 <script src="{{ asset('admin/assets/js/pages/charts/sparkline.js') }}"></script>
 <script src="{{ asset('admin/assets/js/pages/maps/jvectormap.js') }}"></script>
 <script src="{{ asset('admin/assets/js/pages/charts/jquery-knob.js') }}"></script>
+
+{{-- <script src="https://cdn.datatables.net/2.1.3/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.5.0/js/dataTables.rowReorder.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.5.0/js/rowReorder.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
+<script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.dataTables.js"></script> --}}
+<script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@flasher/flasher@1.2.4/dist/flasher.min.js"></script>

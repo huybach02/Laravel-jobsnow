@@ -46,10 +46,115 @@
     <!-- #END# Right Sidebar -->
 
     <!-- main content -->
-    @yield('content')
+    <section class="content home">
+        <div class="container-fluid">
+            @yield('content')
+        </div>
+    </section>
 
     @include('admin.layouts.script')
 
+    @stack('scripts')
+
+    <script>
+        new DataTable('#example', {
+            "order": [
+                [1, "desc"]
+            ],
+            columnDefs: [{
+                    targets: 1,
+                    visible: false
+                } // Ẩn cột id
+            ],
+            language: {
+                "search": "Tìm kiếm",
+                "lengthMenu": "_MENU_ Dữ liệu/Trang ",
+                "info": "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                "infoEmpty": "Hiển thị 0 đến 0 trong tổng số 0 mục",
+                "infoFiltered": "(được lọc từ _MAX_ mục)",
+                "zeroRecords": "Không tìm thấy kết quả phù hợp"
+            }
+        });
+    </script>
+
+    <script>
+        $(".delete-btn").click(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "Bạn có chắc chắn muốn xoá?",
+                text: "Dữ liệu không thể khôi phục sau khi xoá",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Xác nhận xoá",
+                cancelButtonText: "Hủy"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        method: "DELETE",
+                        url: $(this).attr('href'),
+                        data: {
+                            _token: "{{ csrf_token() }}"
+                        },
+
+                        success: function(data) {
+
+                            if (data.success) {
+                                Swal.fire({
+                                    title: "Đã xoá thành công!",
+                                    text: "Dữ liệu đã được xoá thành công!",
+                                    icon: "success"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.reload();
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Có lỗi xảy ra!",
+                                    text: "Có lỗi xảy ra trong quá trình xoá dữ liệu. Vui lòng thử lại!",
+                                    icon: "error"
+                                })
+                            }
+
+                        },
+
+                        error: function(xhr, status, error) {
+                            console.log(error);
+                        }
+                    })
+                }
+
+            });
+        })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("body").on('click', ".change-status", function() {
+                let isChecked = $(this).is(":checked")
+                let id = $(this).data('id')
+                let url = $(this).data('url')
+
+                $.ajax({
+                    url: url,
+                    method: "PUT",
+                    data: {
+                        id: id,
+                        status: isChecked,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(data) {
+                        flasher.success(data.message, "Thành công")
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>
