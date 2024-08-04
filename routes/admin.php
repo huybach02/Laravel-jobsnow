@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\TeamSizeController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->as('admin.')->group(function () {
@@ -39,8 +41,16 @@ Route::prefix('admin')->as('admin.')->group(function () {
     // Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Industries
+    // Industries Types
     Route::put("industry-types/change-status", [IndustryTypeController::class, "changeStatus"])->name("industry-types.change-status");
     Route::resource('industry-types', IndustryTypeController::class);
+
+    // Organization Types
+    Route::put("organization-types/change-status", [OrganizationTypeController::class, "changeStatus"])->name("organization-types.change-status");
+    Route::resource("organization-types", OrganizationTypeController::class);
+
+    // Team size
+    Route::put("team-sizes/change-status", [TeamSizeController::class, "changeStatus"])->name("team-sizes.change-status");
+    Route::resource("team-sizes", TeamSizeController::class);
   });
 });

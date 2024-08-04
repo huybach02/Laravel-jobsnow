@@ -29,8 +29,8 @@
                 </a>
                 <ul class="ml-menu">
                     <li> <a href="{{ route('admin.industry-types.index') }}">Lĩnh vực hoạt động</a></li>
-                    <li> <a href="more-widgets.html">Loại hình tổ chức</a></li>
-                    <li> <a href="more-widgets.html">Quy mô tổ chức</a></li>
+                    <li> <a href="{{ route('admin.organization-types.index') }}">Loại hình tổ chức</a></li>
+                    <li> <a href="{{ route('admin.team-sizes.index') }}">Quy mô tổ chức</a></li>
                 </ul>
             </li>
             {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span
