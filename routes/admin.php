@@ -9,9 +9,12 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\CommuneWardController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\ProvinceCityController;
 use App\Http\Controllers\Admin\TeamSizeController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,5 +55,17 @@ Route::prefix('admin')->as('admin.')->group(function () {
     // Team size
     Route::put("team-sizes/change-status", [TeamSizeController::class, "changeStatus"])->name("team-sizes.change-status");
     Route::resource("team-sizes", TeamSizeController::class);
+
+    // Province City
+    Route::put("province-cities/change-status", [ProvinceCityController::class, "changeStatus"])->name("province-cities.change-status");
+    Route::resource("province-cities", ProvinceCityController::class);
+
+    // District
+    Route::put("districts/change-status", [DistrictController::class, "changeStatus"])->name("districts.change-status");
+    Route::resource("districts", DistrictController::class);
+
+    // Commune Wards
+    Route::put("commune-wards/change-status", [CommuneWardController::class, "changeStatus"])->name("commune-wards.change-status");
+    Route::resource("commune-wards", CommuneWardController::class);
   });
 });

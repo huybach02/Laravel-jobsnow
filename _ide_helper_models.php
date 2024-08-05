@@ -48,6 +48,36 @@ namespace App\Models{
 /**
  * 
  *
+ * @property string $code
+ * @property string $name
+ * @property string|null $name_en
+ * @property string|null $full_name
+ * @property string|null $full_name_en
+ * @property string|null $code_name
+ * @property string|null $district_code
+ * @property int|null $status
+ * @property int|null $administrative_unit_id
+ * @property-read \App\Models\District|null $district
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard whereAdministrativeUnitId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard whereCodeName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard whereDistrictCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard whereFullNameEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard whereNameEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CommuneWard whereStatus($value)
+ */
+	class CommuneWard extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property int $id
  * @property int $user_id
  * @property string|null $name
@@ -113,6 +143,138 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereWebsiteLink($value)
  */
 	class Company extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property string $code
+ * @property string $name
+ * @property string|null $name_en
+ * @property string|null $full_name
+ * @property string|null $full_name_en
+ * @property string|null $code_name
+ * @property string|null $province_code
+ * @property int|null $status
+ * @property int|null $administrative_unit_id
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CommuneWard> $communeWards
+ * @property-read int|null $commune_wards_count
+ * @property-read \App\Models\ProvinceCity|null $province
+ * @method static \Illuminate\Database\Eloquent\Builder|District newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|District newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|District query()
+ * @method static \Illuminate\Database\Eloquent\Builder|District whereAdministrativeUnitId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|District whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|District whereCodeName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|District whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|District whereFullNameEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|District whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|District whereNameEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|District whereProvinceCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|District whereStatus($value)
+ */
+	class District extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|IndustryType whereUpdatedAt($value)
+ */
+	class IndustryType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereUpdatedAt($value)
+ */
+	class OrganizationType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property string $code
+ * @property string $name
+ * @property string|null $name_en
+ * @property string|null $full_name
+ * @property string|null $full_name_en
+ * @property string|null $code_name
+ * @property int|null $status
+ * @property int|null $administrative_unit_id
+ * @property int|null $administrative_region_id
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\District> $districts
+ * @property-read int|null $districts_count
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity whereAdministrativeRegionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity whereAdministrativeUnitId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity whereCodeName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity whereFullNameEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity whereNameEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity whereStatus($value)
+ */
+	class ProvinceCity extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize query()
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TeamSize whereUpdatedAt($value)
+ */
+	class TeamSize extends \Eloquent {}
 }
 
 namespace App\Models{

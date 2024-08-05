@@ -43,3 +43,6 @@ label {
     font-weight: 600;
     margin-left: 5px;
 }
+.sidebar .menu .list .ml-menu li.active a.toggled:not(.menu-toggle) {
+    font-weight: 600 !important;
+}

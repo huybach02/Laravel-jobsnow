@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>:: adminX - Admin ::</title>
+    <title>JobsNOW - Quản Trị</title>
 
     @include('admin.layouts.head')
 
@@ -19,7 +19,7 @@
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
-            <p>Please wait...</p>
+            <p>Đang tải dữ liệu...</p>
         </div>
     </div>
 

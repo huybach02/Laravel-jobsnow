@@ -20,17 +20,35 @@
                 @endauth
                 <!-- #User Info -->
             </li>
-            <li class="active open"> <a href="{{ route('admin.dashboard') }}"><i
+            <li class="{{ setActive(['admin.dashboard']) }}"> <a href="{{ route('admin.dashboard') }}"><i
                         class="zmdi zmdi-view-dashboard"></i><span class="font-bold">Thống
                         Kê</span> </a>
-            <li> <a href="javascript:void(0);" class="menu-toggle d-flex align-items-center">
+            <li class="{{ setActive(['admin.industry-types.*', 'admin.organization-types.*', 'admin.team-sizes.*']) }}">
+                <a href="javascript:void(0);" class="menu-toggle d-flex align-items-center">
                     <i class="zmdi zmdi-layers"></i>
                     <span class="font-bold">QL Thông Tin Tổ Chức</span>
                 </a>
                 <ul class="ml-menu">
-                    <li> <a href="{{ route('admin.industry-types.index') }}">Lĩnh vực hoạt động</a></li>
-                    <li> <a href="{{ route('admin.organization-types.index') }}">Loại hình tổ chức</a></li>
-                    <li> <a href="{{ route('admin.team-sizes.index') }}">Quy mô tổ chức</a></li>
+                    <li class="{{ setSubActive(['admin.industry-types.*']) }}"> <a
+                            href="{{ route('admin.industry-types.index') }}">Lĩnh vực hoạt động</a></li>
+                    <li class="{{ setSubActive(['admin.organization-types.*']) }}"> <a
+                            href="{{ route('admin.organization-types.index') }}">Loại hình tổ chức</a></li>
+                    <li class="{{ setSubActive(['admin.team-sizes.*']) }}"> <a
+                            href="{{ route('admin.team-sizes.index') }}">Quy mô tổ chức</a></li>
+                </ul>
+            </li>
+            <li class="{{ setActive(['admin.province-cities.*', 'admin.districts.*', 'admin.commune-wards.*']) }}"> <a
+                    href="javascript:void(0);" class="menu-toggle d-flex align-items-center">
+                    <i class="zmdi zmdi-pin"></i>
+                    <span class="font-bold">QL Địa Điểm</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ setSubActive(['admin.province-cities.*']) }}"> <a
+                            href="{{ route('admin.province-cities.index') }}">Tỉnh/Thành phố</a></li>
+                    <li class="{{ setSubActive(['admin.districts.*']) }}"> <a
+                            href="{{ route('admin.districts.index') }}">Quận/Huyện</a></li>
+                    <li class="{{ setSubActive(['admin.commune-wards.*']) }}"> <a
+                            href="{{ route('admin.commune-wards.index') }}">Phường/Xã</a></li>
                 </ul>
             </li>
             {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span
