@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,10 +22,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, "index"])->name("home");
 
-// Route::get('dashboard', function () {
-//   return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 // Candidate
 Route::prefix("candidate")->as("candidate.")->middleware(["auth", "verified", "role:candidate"])->group(function () {
   Route::get('dashboard', [CandidateDashboardController::class, "index"])->name('dashboard');
@@ -41,6 +38,7 @@ Route::prefix("company")->as("company.")->middleware(["auth", "verified", "role:
   Route::get("change-type-tab", [CompanyProfileController::class, "changeTypeTab"])->name("change-type-tab");
 });
 
+// Upload File Tinymce
 Route::post('/upload', function (Request $request) {
   if ($request->hasFile("file")) {
     $image = $request->file('file');
@@ -52,11 +50,10 @@ Route::post('/upload', function (Request $request) {
   }
 })->name("upload");
 
-// Route::middleware('auth')->group(function () {
-//   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+// Location
+Route::get("get-districts/{province_code}", [LocationController::class, "getDistricts"])->name("get-districts");
+Route::get("get-wards/{district_code}", [LocationController::class, "getWards"])->name("get-wards");
+
 
 Route::fallback(function () {
   return redirect()->route('home');

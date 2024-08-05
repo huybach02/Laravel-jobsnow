@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Company;
+
 function setActive(array $route)
 {
   if (is_array($route)) {
@@ -20,4 +22,39 @@ function setSubActive(array $route)
       }
     }
   }
+}
+
+function isCompanyProfileCompleted()
+{
+  $requiredFields = [
+    "logo",
+    "banner",
+    "name",
+    "industry_type_id",
+    "organization_type_id",
+    "team_size_id",
+    "tax_code",
+    "established_date",
+    "bio",
+    "email",
+    "phone",
+    "province",
+    "district",
+    "ward",
+    "address",
+    "slug"
+  ];
+
+  $companyProfile = Company::where("user_id", auth()->user()->id)->first();
+
+  if ($companyProfile) {
+    foreach ($requiredFields as $field) {
+      if (empty($companyProfile->{$field})) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  return false;
 }

@@ -5,7 +5,13 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\CompanyProfileContactRequest;
 use App\Http\Requests\Frontend\CompanyProfileRequest;
+use App\Models\CommuneWard;
 use App\Models\Company;
+use App\Models\District;
+use App\Models\IndustryType;
+use App\Models\OrganizationType;
+use App\Models\ProvinceCity;
+use App\Models\TeamSize;
 use App\Models\User;
 use App\Traits\FileUploadTrait;
 use Illuminate\Support\Facades\Hash;
@@ -19,8 +25,20 @@ class CompanyProfileController extends Controller
   public function index()
   {
     $company = Company::where("user_id", auth()->user()->id)->first();
+    $industryTypes = IndustryType::all();
+    $organizationTypes = OrganizationType::all();
+    $teamSizes = TeamSize::all();
+    $provinces = ProvinceCity::all();
 
-    return view("frontend.company-dashboard.profile.index", compact("company"));
+    $districts = [];
+    $wards = [];
+
+    if ($company) {
+      $districts = District::select("code", "name", "code_name")->where(["province_code" => $company->province, "status" => 1])->get();
+      $wards = CommuneWard::select("code", "name", "code_name")->where(["district_code" => $company->district, "status" => 1])->get();
+    }
+
+    return view("frontend.company-dashboard.profile.index", compact("company", "industryTypes", "organizationTypes", "teamSizes", "provinces", "districts", "wards"));
   }
 
   public function updateInfo(CompanyProfileRequest $request)
@@ -56,6 +74,13 @@ class CompanyProfileController extends Controller
       $user->name = $request->name;
       $user->save();
     }
+
+    if (isCompanyProfileCompleted()) {
+      $company->profile_completed = 1;
+      $company->status = 1;
+      $company->save();
+    }
+
     flash()->addSuccess('Cập nhật thông tin thành công!', "Thành công");
 
     return redirect()->back();
@@ -63,6 +88,8 @@ class CompanyProfileController extends Controller
 
   public function updateContact(CompanyProfileContactRequest $request)
   {
+    $company = Company::where("user_id", auth()->user()->id)->first();
+
     Company::updateOrCreate(
       ["user_id" => auth()->user()->id],
       [
@@ -70,13 +97,19 @@ class CompanyProfileController extends Controller
         "phone" => $request->phone,
         "website_link" => $request->website_link,
         "fb_link" => $request->fb_link,
-        "province_city" => $request->province_city,
+        "province" => $request->province,
         "district" => $request->district,
-        "commune_ward" => $request->commune_ward,
+        "ward" => $request->ward,
         "address" => $request->address,
         "map_link" => $request->map_link
       ]
     );
+
+    if (isCompanyProfileCompleted()) {
+      $company->profile_completed = 1;
+      $company->status = 1;
+      $company->save();
+    }
 
     flash()->addSuccess('Cập nhật thông tin thành công!', "Thành công");
 

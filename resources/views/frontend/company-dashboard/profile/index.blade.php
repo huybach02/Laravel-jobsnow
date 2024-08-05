@@ -6,10 +6,10 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
-                        <h2 class="mb-20">Blog</h2>
+                        <h2 class="mb-20">Thông Tin Doanh Nghiệp</h2>
                         <ul class="breadcrumbs">
-                            <li><a class="home-icon" href="index.html">Home</a></li>
-                            <li>Blog</li>
+                            <li><a class="home-icon" href="{{ route('home') }}">Home</a></li>
+                            <li>Thông tin doanh nghiệp</li>
                         </ul>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                                 khoản</button>
                         </li>
                     </ul>
-                    <div class="tab-content mt-30" id="myTabContent">
+                    <div class="tab-content mt-30 mb-120" id="myTabContent">
                         <div class="tab-pane fade {{ session()->has('type_tab') ? (session()->get('type_tab') == 'info' ? 'show active' : '') : 'show active' }}"
                             id="home" role="tabpanel" aria-labelledby="home-tab">
                             <form action="{{ route('company.profile.update-info') }}" method="POST"
@@ -202,10 +202,13 @@
                                             *</label>
                                         <select class="form-select select-active" name="industry_type_id">
                                             <option value="">-- Chọn lĩnh vực --</option>
-                                            <option value="1"
-                                                {{ old('industry_type_id', $company?->industry_type_id) == '1' ? 'selected' : '' }}>
-                                                Công nghệ thông tin</option>
-                                            <option value="2">Tài chính</option>
+
+                                            @foreach ($industryTypes as $industryType)
+                                                <option value="{{ $industryType->id }}"
+                                                    {{ old('industry_type_id', $company?->industry_type_id) == $industryType->id ? 'selected' : '' }}>
+                                                    {{ $industryType->name }}</option>
+                                            @endforeach
+
                                         </select>
                                         @if ($errors->has('industry_type_id'))
                                             <small class="text-danger">{{ $errors->first('industry_type_id') }}</small>
@@ -220,21 +223,13 @@
                                             *</label>
                                         <select class="form-select select-active" name="organization_type_id">
                                             <option value="">-- Chọn loại hình tổ chức --</option>
-                                            <option
-                                                {{ old('organization_type_id', $company?->organization_type_id) == '1' ? 'selected' : '' }}
-                                                value="1">Công ty TNHH</option>
-                                            <option
-                                                {{ old('organization_type_id', $company?->organization_type_id) == '2' ? 'selected' : '' }}
-                                                value="2">Công ty TNHH Một thành viên</option>
-                                            <option
-                                                {{ old('organization_type_id', $company?->organization_type_id) == '3' ? 'selected' : '' }}
-                                                value="3">Công ty cổ phần</option>
-                                            <option
-                                                {{ old('organization_type_id', $company?->organization_type_id) == '4' ? 'selected' : '' }}
-                                                value="4">Công ty hợp danh</option>
-                                            <option
-                                                {{ old('organization_type_id', $company?->organization_type_id) == '5' ? 'selected' : '' }}
-                                                value="5">Doanh nghiệp tư nhân</option>
+
+                                            @foreach ($organizationTypes as $organizationType)
+                                                <option value="{{ $organizationType->id }}"
+                                                    {{ old('organization_type_id', $company?->organization_type_id) == $organizationType->id ? 'selected' : '' }}>
+                                                    {{ $organizationType->name }}</option>
+                                            @endforeach
+
                                         </select>
                                         @if ($errors->has('organization_type_id'))
                                             <small
@@ -249,19 +244,13 @@
                                             *</label>
                                         <select class="form-select select-active" name="team_size_id">
                                             <option value="">-- Chọn quy mô doanh nghiệp --</option>
-                                            <option
-                                                {{ old('team_size_id', $company?->team_size_id) == '1' ? 'selected' : '' }}
-                                                value="1">Doanh nghiệp quy mô siêu nhỏ (Không quá 10 nhân sự)
-                                            </option>
-                                            <option
-                                                {{ old('team_size_id', $company?->team_size_id) == '2' ? 'selected' : '' }}
-                                                value="2">Doanh nghiệp quy mô nhỏ (Không quá 50 nhân sự)</option>
-                                            <option
-                                                {{ old('team_size_id', $company?->team_size_id) == '3' ? 'selected' : '' }}
-                                                value="3">Doanh nghiệp quy mô vừa (Không quá 100 nhân sự)</option>
-                                            <option
-                                                {{ old('team_size_id', $company?->team_size_id) == '4' ? 'selected' : '' }}
-                                                value="4">Doanh nghiệp quy mô lớn (Trên 100 nhân sự)</option>
+
+                                            @foreach ($teamSizes as $teamSize)
+                                                <option value="{{ $teamSize->id }}"
+                                                    {{ old('team_size_id', $company?->team_size_id) == $teamSize->id ? 'selected' : '' }}>
+                                                    {{ $teamSize->name }}</option>
+                                            @endforeach
+
                                         </select>
                                         @if ($errors->has('team_size_id'))
                                             <small class="text-danger">{{ $errors->first('team_size_id') }}</small>
@@ -373,11 +362,15 @@
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted font-bold mb-10">Tỉnh/Thành phố
                                                 *</label>
-                                            <select class="form-select select-active" name="province_city">
+                                            <select class="form-select select-active province" name="province">
                                                 <option value="">-- Chọn tỉnh/thành phố --</option>
-                                                <option
-                                                    {{ old('province_city', $company?->province_city) == 'Test Province' ? 'selected' : '' }}
-                                                    value="Test Province">Test Province</option>
+
+                                                @foreach ($provinces as $province)
+                                                    <option
+                                                        {{ old('province_city', $company?->province) == $province?->code ? 'selected' : '' }}
+                                                        value="{{ $province?->code }}">{{ $province?->name }}</option>
+                                                @endforeach
+
                                             </select>
                                             @if ($errors->has('province_city'))
                                                 <small class="text-danger">{{ $errors->first('province_city') }}</small>
@@ -388,11 +381,15 @@
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted font-bold mb-10">Quận/Huyện
                                                 *</label>
-                                            <select class="form-select select-active" name="district">
+                                            <select class="form-select select-active district" name="district">
                                                 <option value="">-- Chọn quận/huyện --</option>
-                                                <option
-                                                    {{ old('district', $company?->district) == 'Test District' ? 'selected' : '' }}
-                                                    value="Test District">Test District</option>
+
+                                                @foreach ($districts as $district)
+                                                    <option
+                                                        {{ old('district', $company?->district) == $district?->code ? 'selected' : '' }}
+                                                        value="{{ $district?->code }}">{{ $district?->name }}</option>
+                                                @endforeach
+
                                             </select>
                                             @if ($errors->has('district'))
                                                 <small class="text-danger">{{ $errors->first('district') }}</small>
@@ -403,11 +400,15 @@
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted font-bold mb-10">Xã/Phường
                                                 *</label>
-                                            <select class="form-select select-active" name="commune_ward">
+                                            <select class="form-select select-active ward" name="ward">
                                                 <option value="">-- Chọn xã/phường --</option>
-                                                <option
-                                                    {{ old('commune_ward', $company?->commune_ward) == 'Test Commune' ? 'selected' : '' }}
-                                                    value="Test Commune">Test Commune</option>
+
+                                                @foreach ($wards as $ward)
+                                                    <option
+                                                        {{ old('ward', $company?->ward) == $ward?->code ? 'selected' : '' }}
+                                                        value="{{ $ward?->code }}">{{ $ward?->name }}</option>
+                                                @endforeach
+
                                             </select>
                                             @if ($errors->has('commune_ward'))
                                                 <small class="text-danger">{{ $errors->first('commune_ward') }}</small>
@@ -534,6 +535,58 @@
             $('#sortSelect').on('change', function() {
                 window.location.href = this.value;
             });
+        })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".province").on("change", function() {
+                let province_code = $(this).val();
+
+                $(".district").html('<option value="">-- Chọn quận/huyện --</option>');
+                $(".ward").html('<option value="">-- Chọn xã/phường --</option>');
+
+                let html = ""
+
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('get-districts', ':province_code') }}".replace(':province_code',
+                        province_code),
+                    success: function(data) {
+
+                        data.forEach(element => {
+                            html +=
+                                `<option value="${element.code}">${element.name}</option>`
+                        });
+
+                        $(".district").append(html);
+                    }
+                })
+            })
+
+            $(".district").on("change", function() {
+                let district_code = $(this).val();
+
+                $(".ward").html('<option value="">-- Chọn xã/phường --</option>');
+
+                let html = ""
+
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('get-wards', ':district_code') }}".replace(':district_code',
+                        district_code),
+                    success: function(data) {
+
+                        data.forEach(element => {
+                            html +=
+                                `<option value="${element.code}">${element.name}</option>`
+                        });
+
+                        $(".ward").append(html);
+                    }
+                })
+            })
+
         })
     </script>
 @endpush

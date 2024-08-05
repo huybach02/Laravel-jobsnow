@@ -26,9 +26,9 @@ class CompanyProfileContactRequest extends FormRequest
       "phone" => ["required", "digits:10"],
       "website_link" => ["nullable", "url"],
       "fb_link" => ["nullable", "url"],
-      "province_city" => ["required"],
+      "province" => ["required"],
       "district" => ["required"],
-      "commune_ward" => ["required"],
+      "ward" => ["required"],
       "address" => ["required"],
       "map_link" => ["nullable"],
     ];

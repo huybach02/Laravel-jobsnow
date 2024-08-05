@@ -82,9 +82,9 @@ namespace App\Models{
  * @property int $user_id
  * @property string|null $name
  * @property string|null $slug
- * @property int|null $industry_type_id
- * @property int|null $organization_type_id
- * @property int|null $team_size_id
+ * @property int $industry_type_id
+ * @property int $organization_type_id
+ * @property int $team_size_id
  * @property string|null $logo
  * @property string|null $banner
  * @property string|null $established_date
@@ -92,9 +92,9 @@ namespace App\Models{
  * @property string|null $vision
  * @property int|null $total_views
  * @property string|null $address
- * @property string|null $province_city
- * @property string|null $district
- * @property string|null $commune_ward
+ * @property int|null $province
+ * @property int|null $district
+ * @property int|null $ward
  * @property string|null $phone
  * @property string|null $email
  * @property string|null $map_link
@@ -114,7 +114,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereBanner($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereBio($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Company whereCommuneWard($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereDistrict($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereDocumentVerifiedAt($value)
@@ -130,7 +129,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereOrganizationTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereProfileCompleted($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Company whereProvinceCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereProvince($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereTaxCode($value)
@@ -140,6 +139,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereVisibility($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereVision($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereWard($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereWebsiteLink($value)
  */
 	class Company extends \Eloquent {}
