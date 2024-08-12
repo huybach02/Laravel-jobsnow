@@ -17,6 +17,29 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel whereUpdatedAt($value)
+ */
+	class AcademicLevel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
  * @property string $image
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -42,6 +65,139 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Admin whereUpdatedAt($value)
  */
 	class Admin extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string|null $image
+ * @property string|null $full_name
+ * @property string|null $slug
+ * @property string|null $gender
+ * @property string|null $phone
+ * @property string|null $email
+ * @property string|null $cv_link
+ * @property string|null $bio
+ * @property string|null $marital_status
+ * @property string|null $birthday
+ * @property int|null $employment_level_id
+ * @property int|null $desired_salary_id
+ * @property string|null $career_goals
+ * @property int|null $province
+ * @property int|null $district
+ * @property int|null $ward
+ * @property string|null $address
+ * @property string|null $workplace_desired
+ * @property string|null $fb_link
+ * @property string|null $title
+ * @property int|null $profession_id
+ * @property string|null $academic_level_id
+ * @property int|null $experience_id
+ * @property int|null $education_id
+ * @property int|null $experience_work_id
+ * @property string|null $advanced_skills
+ * @property string|null $computer_skills
+ * @property string|null $foreign_languages
+ * @property string|null $soft_skills
+ * @property int $status
+ * @property int $profile_completed
+ * @property int $view_count
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereAcademicLevelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereAdvancedSkills($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereBio($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereBirthday($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereCareerGoals($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereComputerSkills($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereCvLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereDesiredSalaryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereDistrict($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereEducationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereEmploymentLevelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereExperienceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereExperienceWorkId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereFbLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereForeignLanguages($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereFullName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereMaritalStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereProfessionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereProfileCompleted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereProvince($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereSoftSkills($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereViewCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereWard($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereWorkplaceDesired($value)
+ */
+	class Candidate extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $candidate_id
+ * @property string|null $name_education
+ * @property string|null $training_unit
+ * @property string|null $start_date
+ * @property string|null $end_date
+ * @property string|null $rating
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereCandidateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereNameEducation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereRating($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereTrainingUnit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateEducation whereUpdatedAt($value)
+ */
+	class CandidateEducation extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $candidate_id
+ * @property int $language_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereCandidateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereLanguageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateLanguage whereUpdatedAt($value)
+ */
+	class CandidateLanguage extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -149,6 +305,29 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|DesiredSalary newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DesiredSalary newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DesiredSalary query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DesiredSalary whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DesiredSalary whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DesiredSalary whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DesiredSalary whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DesiredSalary whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DesiredSalary whereUpdatedAt($value)
+ */
+	class DesiredSalary extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property string $code
  * @property string $name
  * @property string|null $name_en
@@ -187,6 +366,52 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel whereUpdatedAt($value)
+ */
+	class EmploymentLevel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Experience whereUpdatedAt($value)
+ */
+	class Experience extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|IndustryType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|IndustryType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|IndustryType query()
@@ -210,6 +435,29 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Language newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Language newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Language query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Language whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Language whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Language whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Language whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Language whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Language whereUpdatedAt($value)
+ */
+	class Language extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType query()
@@ -221,6 +469,29 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereUpdatedAt($value)
  */
 	class OrganizationType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Profession whereUpdatedAt($value)
+ */
+	class Profession extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -264,6 +535,29 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill whereUpdatedAt($value)
+ */
+	class SoftSkill extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|TeamSize newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamSize newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TeamSize query()
@@ -291,6 +585,7 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Candidate|null $candidate
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens

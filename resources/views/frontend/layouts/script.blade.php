@@ -14,7 +14,11 @@
 <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
 <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/bootstrap-tagsinput.js') }}"></script>
 <script src="{{ asset('frontend/assets/tinymce/tinymce.min.js') }}"></script>
 
-{{-- <script src="https://cdn.tiny.cloud/1/of7awl7i3yrx0uncfwivkiru4ocgevm8h6zkg9hkc3j5tlbn/tinymce/7/tinymce.min.js"
-    referrerpolicy="origin"></script> --}}
+<script src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@flasher/flasher@1.2.4/dist/flasher.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

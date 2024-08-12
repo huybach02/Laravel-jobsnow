@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AcademicLevelController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
@@ -11,10 +12,16 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\CommuneWardController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DesiredSalaryController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\EmploymentLevelController;
+use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\ProvinceCityController;
+use App\Http\Controllers\Admin\SoftSkillController;
 use App\Http\Controllers\Admin\TeamSizeController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,5 +74,33 @@ Route::prefix('admin')->as('admin.')->group(function () {
     // Commune Wards
     Route::put("commune-wards/change-status", [CommuneWardController::class, "changeStatus"])->name("commune-wards.change-status");
     Route::resource("commune-wards", CommuneWardController::class);
+
+    // Languages
+    Route::put("languages/change-status", [LanguageController::class, "changeStatus"])->name("languages.change-status");
+    Route::resource("languages", LanguageController::class);
+
+    // Profession
+    Route::put("professions/change-status", [ProfessionController::class, "changeStatus"])->name("professions.change-status");
+    Route::resource("professions", ProfessionController::class);
+
+    // Employment Level
+    Route::put("employment-levels/change-status", [EmploymentLevelController::class, "changeStatus"])->name("employment-levels.change-status");
+    Route::resource("employment-levels", EmploymentLevelController::class);
+
+    // Desired Salary
+    Route::put("desired-salaries/change-status", [DesiredSalaryController::class, "changeStatus"])->name("desired-salaries.change-status");
+    Route::resource("desired-salaries", DesiredSalaryController::class);
+
+    // Soft Skills
+    Route::put("soft-skills/change-status", [SoftSkillController::class, "changeStatus"])->name("soft-skills.change-status");
+    Route::resource("soft-skills", SoftSkillController::class);
+
+    // Experience
+    Route::put("experiences/change-status", [ExperienceController::class, "changeStatus"])->name("experiences.change-status");
+    Route::resource("experiences", ExperienceController::class);
+
+    // Academic level
+    Route::put("academic-levels/change-status", [AcademicLevelController::class, "changeStatus"])->name("academic-levels.change-status");
+    Route::resource("academic-levels", AcademicLevelController::class);
   });
 });

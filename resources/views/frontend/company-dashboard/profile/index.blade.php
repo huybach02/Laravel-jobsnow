@@ -367,13 +367,13 @@
 
                                                 @foreach ($provinces as $province)
                                                     <option
-                                                        {{ old('province_city', $company?->province) == $province?->code ? 'selected' : '' }}
+                                                        {{ old('province', $company?->province) == $province?->code ? 'selected' : '' }}
                                                         value="{{ $province?->code }}">{{ $province?->name }}</option>
                                                 @endforeach
 
                                             </select>
-                                            @if ($errors->has('province_city'))
-                                                <small class="text-danger">{{ $errors->first('province_city') }}</small>
+                                            @if ($errors->has('province'))
+                                                <small class="text-danger">{{ $errors->first('province') }}</small>
                                             @endif
                                         </div>
                                     </div>
@@ -410,8 +410,8 @@
                                                 @endforeach
 
                                             </select>
-                                            @if ($errors->has('commune_ward'))
-                                                <small class="text-danger">{{ $errors->first('commune_ward') }}</small>
+                                            @if ($errors->has('ward'))
+                                                <small class="text-danger">{{ $errors->first('ward') }}</small>
                                             @endif
                                         </div>
                                     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Candidate;
 use App\Models\Company;
 
 function setActive(array $route)
@@ -50,6 +51,49 @@ function isCompanyProfileCompleted()
   if ($companyProfile) {
     foreach ($requiredFields as $field) {
       if (empty($companyProfile->{$field})) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  return false;
+}
+
+function isCandidateProfileCompleted()
+{
+  $requiredFields = [
+    "image",
+    "full_name",
+    "slug",
+    "gender",
+    "phone",
+    "email",
+    "marital_status",
+    "birthday",
+    "employment_level_id",
+    "desired_salary_id",
+    "career_goals",
+    "province",
+    "district",
+    "ward",
+    "address",
+    "workplace_desired",
+    "profession_id",
+    "academic_level_id",
+    "experience_id",
+    "advanced_skills",
+    "computer_skills",
+    "foreign_languages",
+    "soft_skills",
+    "allow_show"
+  ];
+
+  $candidateProfile = Candidate::where("user_id", auth()->user()->id)->first();
+
+  if ($candidateProfile) {
+    foreach ($requiredFields as $field) {
+      if (empty($candidateProfile->{$field})) {
         return false;
       }
     }

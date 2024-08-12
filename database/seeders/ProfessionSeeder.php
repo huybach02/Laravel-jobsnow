@@ -1,0 +1,140 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\Profession;
+
+class ProfessionSeeder extends Seeder
+{
+  /**
+   * Run the database seeds.
+   */
+  public function run(): void
+  {
+    $professions = [
+      ['name' => 'Lập trình viên', 'slug' => 'lap-trinh-vien', 'status' => 1],
+      ['name' => 'Quản trị hệ thống', 'slug' => 'quan-tri-he-thong', 'status' => 1],
+      ['name' => 'Chuyên viên tín dụng', 'slug' => 'chuyen-vien-tin-dung', 'status' => 1],
+      ['name' => 'Nhân viên kế toán', 'slug' => 'nhan-vien-ke-toan', 'status' => 1],
+      ['name' => 'Bác sĩ', 'slug' => 'bac-si', 'status' => 1],
+      ['name' => 'Y tá', 'slug' => 'y-ta', 'status' => 1],
+      ['name' => 'Giáo viên', 'slug' => 'giao-vien', 'status' => 1],
+      ['name' => 'Trợ giảng', 'slug' => 'tro-giang', 'status' => 1],
+      ['name' => 'Chuyên viên Marketing', 'slug' => 'chuyen-vien-marketing', 'status' => 1],
+      ['name' => 'Nhân viên quảng cáo', 'slug' => 'nhan-vien-quang-cao', 'status' => 1],
+      ['name' => 'Kỹ sư xây dựng', 'slug' => 'ky-su-xay-dung', 'status' => 1],
+      ['name' => 'Công nhân xây dựng', 'slug' => 'cong-nhan-xay-dung', 'status' => 1],
+      ['name' => 'Kỹ sư cơ khí', 'slug' => 'ky-su-co-khi', 'status' => 1],
+      ['name' => 'Nhân viên bán hàng', 'slug' => 'nhan-vien-ban-hang', 'status' => 1],
+      ['name' => 'Chuyên viên nhân sự', 'slug' => 'chuyen-vien-nhan-su', 'status' => 1],
+      ['name' => 'Chuyên viên pháp lý', 'slug' => 'chuyen-vien-phap-ly', 'status' => 1],
+      ['name' => 'Kỹ sư phần mềm', 'slug' => 'ky-su-phan-mem', 'status' => 1],
+      ['name' => 'Chuyên viên tư vấn', 'slug' => 'chuyen-vien-tu-van', 'status' => 1],
+      ['name' => 'Nhân viên thu mua', 'slug' => 'nhan-vien-thu-mua', 'status' => 1],
+      ['name' => 'Chuyên viên kinh doanh', 'slug' => 'chuyen-vien-kinh-doanh', 'status' => 1],
+      ['name' => 'Nhân viên chăm sóc khách hàng', 'slug' => 'nhan-vien-cham-soc-khach-hang', 'status' => 1],
+      ['name' => 'Chuyên viên thiết kế', 'slug' => 'chuyen-vien-thiet-ke', 'status' => 1],
+      ['name' => 'Chuyên viên bảo mật', 'slug' => 'chuyen-vien-bao-mat', 'status' => 1],
+      ['name' => 'Chuyên viên kiểm thử', 'slug' => 'chuyen-vien-kiem-thu', 'status' => 1],
+      ['name' => 'Kỹ thuật viên', 'slug' => 'ky-thuat-vien', 'status' => 1],
+      ['name' => 'Nhân viên IT support', 'slug' => 'nhan-vien-it-support', 'status' => 1],
+      ['name' => 'Nhân viên nhập liệu', 'slug' => 'nhan-vien-nhap-lieu', 'status' => 1],
+      ['name' => 'Chuyên viên đào tạo', 'slug' => 'chuyen-vien-dao-tao', 'status' => 1],
+      ['name' => 'Nhân viên logistic', 'slug' => 'nhan-vien-logistic', 'status' => 1],
+      ['name' => 'Chuyên viên kế hoạch', 'slug' => 'chuyen-vien-ke-hoach', 'status' => 1],
+      ['name' => 'Chuyên viên thống kê', 'slug' => 'chuyen-vien-thong-ke', 'status' => 1],
+      ['name' => 'Kỹ sư điện', 'slug' => 'ky-su-dien', 'status' => 1],
+      ['name' => 'Chuyên viên SEO', 'slug' => 'chuyen-vien-seo', 'status' => 1],
+      ['name' => 'Chuyên viên quảng cáo trực tuyến', 'slug' => 'chuyen-vien-quang-cao-truc-tuyen', 'status' => 1],
+      ['name' => 'Nhân viên truyền thông', 'slug' => 'nhan-vien-truyen-thong', 'status' => 1],
+      ['name' => 'Chuyên viên chiến lược', 'slug' => 'chuyen-vien-chien-luoc', 'status' => 1],
+      ['name' => 'Nhân viên phát triển sản phẩm', 'slug' => 'nhan-vien-phat-trien-san-pham', 'status' => 1],
+      ['name' => 'Chuyên viên nghiên cứu thị trường', 'slug' => 'chuyen-vien-nghien-cuu-thi-truong', 'status' => 1],
+      ['name' => 'Nhân viên dịch vụ khách hàng', 'slug' => 'nhan-vien-dich-vu-khach-hang', 'status' => 1],
+      ['name' => 'Chuyên viên sáng tạo nội dung', 'slug' => 'chuyen-vien-sang-tao-noi-dung', 'status' => 1],
+      ['name' => 'Chuyên viên phân tích dữ liệu', 'slug' => 'chuyen-vien-phan-tich-du-lieu', 'status' => 1],
+      ['name' => 'Chuyên viên bảo trì hệ thống', 'slug' => 'chuyen-vien-bao-tri-he-thong', 'status' => 1],
+      ['name' => 'Kỹ sư công nghệ thông tin', 'slug' => 'ky-su-cong-nghe-thong-tin', 'status' => 1],
+      ['name' => 'Chuyên viên marketing kỹ thuật số', 'slug' => 'chuyen-vien-marketing-ky-thuat-so', 'status' => 1],
+      ['name' => 'Nhân viên dịch vụ kỹ thuật', 'slug' => 'nhan-vien-dich-vu-ky-thuat', 'status' => 1],
+      ['name' => 'Chuyên viên phân tích tài chính', 'slug' => 'chuyen-vien-phan-tich-tai-chinh', 'status' => 1],
+      ['name' => 'Nhân viên kế hoạch tài chính', 'slug' => 'nhan-vien-ke-hoach-tai-chinh', 'status' => 1],
+      ['name' => 'Kỹ sư xây dựng dân dụng', 'slug' => 'ky-su-xay-dung-dan-dung', 'status' => 1],
+      ['name' => 'Chuyên viên phát triển thị trường', 'slug' => 'chuyen-vien-phat-trien-thi-truong', 'status' => 1],
+      ['name' => 'Nhân viên thiết kế đồ họa', 'slug' => 'nhan-vien-thiet-ke-do-hoa', 'status' => 1],
+      ['name' => 'Chuyên viên ứng dụng công nghệ', 'slug' => 'chuyen-vien-ung-dung-cong-nghe', 'status' => 1],
+      ['name' => 'Nhân viên hỗ trợ kỹ thuật', 'slug' => 'nhan-vien-ho-tro-ky-thuat', 'status' => 1],
+      ['name' => 'Chuyên viên dịch vụ khách hàng', 'slug' => 'chuyen-vien-dich-vu-khach-hang', 'status' => 1],
+      ['name' => 'Nhân viên bảo trì máy móc', 'slug' => 'nhan-vien-bao-tri-may-moc', 'status' => 1],
+      ['name' => 'Chuyên viên phát triển ứng dụng', 'slug' => 'chuyen-vien-phat-trien-ung-dung', 'status' => 1],
+      ['name' => 'Nhân viên bảo trì thiết bị', 'slug' => 'nhan-vien-bao-tri-thiet-bi', 'status' => 1],
+      ['name' => 'Chuyên viên hỗ trợ khách hàng', 'slug' => 'chuyen-vien-ho-tro-khach-hang', 'status' => 1],
+      ['name' => 'Nhân viên dịch vụ công nghệ', 'slug' => 'nhan-vien-dich-vu-cong-nghe', 'status' => 1],
+      ['name' => 'Chuyên viên bán hàng trực tuyến', 'slug' => 'chuyen-vien-ban-hang-truc-tuyen', 'status' => 1],
+      ['name' => 'Nhân viên phân phối', 'slug' => 'nhan-vien-phan-phoi', 'status' => 1],
+      ['name' => 'Chuyên viên phân tích thị trường', 'slug' => 'chuyen-vien-phan-tich-thi-truong', 'status' => 1],
+      ['name' => 'Nhân viên chăm sóc khách hàng trực tuyến', 'slug' => 'nhan-vien-cham-soc-khach-hang-truc-tuyen', 'status' => 1],
+      ['name' => 'Chuyên viên nghiên cứu và phát triển', 'slug' => 'chuyen-vien-nghien-cuu-va-phat-trien', 'status' => 1],
+      ['name' => 'Nhân viên quản lý kho', 'slug' => 'nhan-vien-quan-ly-kho', 'status' => 1],
+      ['name' => 'Chuyên viên lập kế hoạch sản xuất', 'slug' => 'chuyen-vien-lap-ke-hoach-san-xuat', 'status' => 1],
+      ['name' => 'Nhân viên kiểm tra chất lượng', 'slug' => 'nhan-vien-kiem-tra-chat-luong', 'status' => 1],
+      ['name' => 'Chuyên viên phát triển nội dung số', 'slug' => 'chuyen-vien-phat-trien-noi-dung-so', 'status' => 1],
+      ['name' => 'Nhân viên quản lý dự án', 'slug' => 'nhan-vien-quan-ly-du-an', 'status' => 1],
+      ['name' => 'Chuyên viên marketing nội dung', 'slug' => 'chuyen-vien-marketing-noi-dung', 'status' => 1],
+      ['name' => 'Nhân viên tư vấn bán hàng', 'slug' => 'nhan-vien-tu-van-ban-hang', 'status' => 1],
+      ['name' => 'Chuyên viên thiết kế web', 'slug' => 'chuyen-vien-thiet-ke-web', 'status' => 1],
+      ['name' => 'Nhân viên phát triển hệ thống', 'slug' => 'nhan-vien-phat-trien-he-thong', 'status' => 1],
+      ['name' => 'Chuyên viên hỗ trợ phần mềm', 'slug' => 'chuyen-vien-ho-tro-phan-mem', 'status' => 1],
+      ['name' => 'Nhân viên chăm sóc khách hàng qua điện thoại', 'slug' => 'nhan-vien-cham-soc-khach-hang-qua-dien-thoai', 'status' => 1],
+      ['name' => 'Chuyên viên phân tích marketing', 'slug' => 'chuyen-vien-phan-tich-marketing', 'status' => 1],
+      ['name' => 'Nhân viên quản lý bán hàng', 'slug' => 'nhan-vien-quan-ly-ban-hang', 'status' => 1],
+      ['name' => 'Chuyên viên hỗ trợ khách hàng trực tuyến', 'slug' => 'chuyen-vien-ho-tro-khach-hang-truc-tuyen', 'status' => 1],
+      ['name' => 'Nhân viên quản lý chất lượng', 'slug' => 'nhan-vien-quan-ly-chat-luong', 'status' => 1],
+      ['name' => 'Chuyên viên phân tích và báo cáo', 'slug' => 'chuyen-vien-phan-tich-va-bao-cao', 'status' => 1],
+      ['name' => 'Nhân viên hỗ trợ khách hàng qua email', 'slug' => 'nhan-vien-ho-tro-khach-hang-qua-email', 'status' => 1],
+      ['name' => 'Chuyên viên truyền thông nội bộ', 'slug' => 'chuyen-vien-truyen-thong-noi-bo', 'status' => 1],
+      ['name' => 'Nhân viên chăm sóc khách hàng qua mạng xã hội', 'slug' => 'nhan-vien-cham-soc-khach-hang-qua-mang-xa-hoi', 'status' => 1],
+      ['name' => 'Chuyên viên phát triển thương hiệu', 'slug' => 'chuyen-vien-phat-trien-thuong-hieu', 'status' => 1],
+      ['name' => 'Nhân viên thiết kế sản phẩm', 'slug' => 'nhan-vien-thiet-ke-san-pham', 'status' => 1],
+      ['name' => 'Chuyên viên phân tích người dùng', 'slug' => 'chuyen-vien-phan-tich-nguoi-dung', 'status' => 1],
+      ['name' => 'Nhân viên chăm sóc khách hàng qua chat', 'slug' => 'nhan-vien-cham-soc-khach-hang-qua-chat', 'status' => 1],
+      ['name' => 'Chuyên viên quản lý và phát triển dự án', 'slug' => 'chuyen-vien-quan-ly-va-phat-trien-du-an', 'status' => 1],
+      ['name' => 'Nhân viên phân tích và dự đoán', 'slug' => 'nhan-vien-phan-tich-va-du-doan', 'status' => 1],
+      ['name' => 'Chuyên viên phát triển phần mềm', 'slug' => 'chuyen-vien-phat-trien-phan-mem', 'status' => 1],
+      ['name' => 'Nhân viên kế toán quản trị', 'slug' => 'nhan-vien-ke-toan-quan-tri', 'status' => 1],
+      ['name' => 'Chuyên viên phát triển đối tác', 'slug' => 'chuyen-vien-phat-trien-doi-tac', 'status' => 1],
+      ['name' => 'Nhân viên phát triển thị trường quốc tế', 'slug' => 'nhan-vien-phat-trien-thi-truong-quoc-te', 'status' => 1],
+      ['name' => 'Chuyên viên quản lý quan hệ khách hàng', 'slug' => 'chuyen-vien-quan-ly-quan-he-khach-hang', 'status' => 1],
+      ['name' => 'Nhân viên hỗ trợ khách hàng qua điện thoại', 'slug' => 'nhan-vien-ho-tro-khach-hang-qua-dien-thoai', 'status' => 1],
+      ['name' => 'Chuyên viên phân tích dữ liệu lớn', 'slug' => 'chuyen-vien-phan-tich-du-lieu-lon', 'status' => 1],
+      ['name' => 'Nhân viên phân tích chiến lược', 'slug' => 'nhan-vien-phan-tich-chien-luoc', 'status' => 1],
+      ['name' => 'Chuyên viên phát triển dịch vụ', 'slug' => 'chuyen-vien-phat-trien-dich-vu', 'status' => 1],
+      ['name' => 'Nhân viên quản lý tài sản', 'slug' => 'nhan-vien-quan-ly-tai-san', 'status' => 1],
+      ['name' => 'Chuyên viên thiết kế sản phẩm mới', 'slug' => 'chuyen-vien-thiet-ke-san-pham-moi', 'status' => 1],
+      ['name' => 'Nhân viên phân tích hiệu suất', 'slug' => 'nhan-vien-phan-tich-hieu-suat', 'status' => 1],
+      ['name' => 'Chuyên viên phát triển sản phẩm kỹ thuật số', 'slug' => 'chuyen-vien-phat-trien-san-pham-ky-thuat-so', 'status' => 1],
+      ['name' => 'Nhân viên quản lý rủi ro', 'slug' => 'nhan-vien-quan-ly-rui-ro', 'status' => 1],
+      ['name' => 'Chuyên viên chăm sóc khách hàng qua mạng', 'slug' => 'chuyen-vien-cham-soc-khach-hang-qua-mang', 'status' => 1],
+      ['name' => 'Nhân viên quản lý dịch vụ khách hàng', 'slug' => 'nhan-vien-quan-ly-dich-vu-khach-hang', 'status' => 1],
+      ['name' => 'Chuyên viên tư vấn chiến lược', 'slug' => 'chuyen-vien-tu-van-chien-luoc', 'status' => 1],
+      ['name' => 'Nhân viên quản lý kho vận', 'slug' => 'nhan-vien-quan-ly-kho-van', 'status' => 1],
+      ['name' => 'Chuyên viên phân tích hệ thống', 'slug' => 'chuyen-vien-phan-tich-he-thong', 'status' => 1],
+      ['name' => 'Nhân viên chăm sóc khách hàng qua tin nhắn', 'slug' => 'nhan-vien-cham-soc-khach-hang-qua-tin-nhan', 'status' => 1],
+      ['name' => 'Chuyên viên phát triển ứng dụng di động', 'slug' => 'chuyen-vien-phat-trien-ung-dung-di-dong', 'status' => 1],
+      ['name' => 'Nhân viên thiết kế giao diện người dùng', 'slug' => 'nhan-vien-thiet-ke-giao-dien-nguoi-dung', 'status' => 1],
+      ['name' => 'Chuyên viên phân tích hiệu quả marketing', 'slug' => 'chuyen-vien-phan-tich-hieu-qua-marketing', 'status' => 1],
+      ['name' => 'Nhân viên chăm sóc khách hàng qua điện thoại', 'slug' => 'nhan-vien-cham-soc-khach-hang-qua-dien-thoai', 'status' => 1],
+      ['name' => 'Chuyên viên quản lý cơ sở dữ liệu', 'slug' => 'chuyen-vien-quan-ly-co-so-du-lieu', 'status' => 1],
+    ];
+
+
+    foreach ($professions as $data) {
+      $profession = new Profession();
+      $profession->name = $data['name'];
+      $profession->slug = $data['slug'];
+      $profession->status = $data['status'];
+      $profession->save();
+    }
+  }
+}

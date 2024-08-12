@@ -23,10 +23,17 @@
     {{-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
-                <div class="text-center"><img src="{{ asset('frontend/assets/imgs/template/loading.gif') }}" alt="joblist"></div>
+                <div class="text-center"><img src="{{ asset('frontend/assets/imgs/template/loading.gif') }}"
+                        alt="joblist"></div>
             </div>
         </div>
     </div> --}}
+
+    <div class="preloader_demo d-none">
+        <div class="img">
+            <img src="{{ asset('frontend/assets/loading.gif') }}" alt="joblist">
+        </div>
+    </div>
 
     @include('frontend.layouts.header')
 
@@ -62,6 +69,16 @@
     @include('frontend.layouts.footer')
 
     @include('frontend.layouts.script')
+
+    <script>
+        function showPreloader() {
+            $('.preloader_demo').removeClass('d-none')
+        }
+
+        function hidePreloader() {
+            $('.preloader_demo').addClass('d-none')
+        }
+    </script>
 
     @stack('scripts')
 
@@ -130,6 +147,62 @@
         });
     </script>
 
+    <script>
+        $('#tags').tagsInput();
+    </script>
+
+    <script>
+        $("body").on("click", ".delete-btn", function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "Bạn có chắc chắn muốn xoá?",
+                text: "Dữ liệu không thể khôi phục sau khi xoá",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Xác nhận xoá",
+                cancelButtonText: "Hủy"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        method: "DELETE",
+                        url: $(this).attr('href'),
+                        data: {
+                            _token: "{{ csrf_token() }}"
+                        },
+
+                        success: function(data) {
+
+                            if (data.success) {
+                                Swal.fire({
+                                    title: "Đã xoá thành công!",
+                                    text: "Dữ liệu đã được xoá thành công!",
+                                    icon: "success"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.reload();
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Có lỗi xảy ra!",
+                                    text: "Có lỗi xảy ra trong quá trình xoá dữ liệu. Vui lòng thử lại!",
+                                    icon: "error"
+                                })
+                            }
+
+                        },
+
+                        error: function(xhr, status, error) {
+                            console.log(error);
+                        }
+                    })
+                }
+
+            });
+        })
+    </script>
 </body>
 
 </html>

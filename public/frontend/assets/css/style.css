@@ -157,7 +157,7 @@ input,
 select,
 button,
 textarea {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
 }
 
@@ -416,7 +416,7 @@ a {
     .select2-selection__rendered {
     color: #4f5e64;
     line-height: 26px;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
 }
 
@@ -508,7 +508,7 @@ a {
 }
 
 h1 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 56px;
@@ -517,7 +517,7 @@ h1 {
 }
 
 h2 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 36px;
@@ -526,7 +526,7 @@ h2 {
 }
 
 h3 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 28px;
@@ -535,7 +535,7 @@ h3 {
 }
 
 h4 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -544,7 +544,7 @@ h4 {
 }
 
 h5 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
@@ -553,7 +553,7 @@ h5 {
 }
 
 h6 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -566,7 +566,7 @@ h6 {
 .font-sm,
 .font-xs,
 .font-xxs {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 400;
 }
@@ -866,7 +866,7 @@ h4 {
 /*TYPOGRAPHY*/
 body {
     color: #05264e;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
     line-height: 24px;
     font-style: normal;
@@ -888,7 +888,7 @@ h6,
 }
 
 .btn {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     border-radius: 8px;
     padding: 13px 25px;
     font-size: 14px;
@@ -1180,7 +1180,7 @@ h6,
 }
 
 .btn-link {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -1430,7 +1430,7 @@ textarea:focus {
     border: none;
     background-color: #05264e;
     border-radius: 10px;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .contact-from-area .contact-form-style button:hover {
@@ -1912,7 +1912,7 @@ label {
     top: 38px;
     right: 25px;
     color: #15a0df;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     font-size: 22px;
 }
@@ -2107,7 +2107,7 @@ label {
 
 .card-grid-2 .card-block-info .card-text-price {
     color: #15a0df;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     font-size: 22px;
 }
@@ -2150,7 +2150,7 @@ label {
     padding-left: 55px;
     font-size: 14px;
     font-weight: 600;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #151515;
     line-height: 17px;
 }
@@ -2171,7 +2171,7 @@ label {
     color: #05264e;
     line-height: 18px;
     font-weight: bold;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     display: block;
     padding-bottom: 5px;
 }
@@ -2391,7 +2391,7 @@ label {
 
 .card-grid-3 .card-block-info .card-text-price {
     color: #15a0df;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     font-size: 22px;
 }
@@ -2427,7 +2427,7 @@ label {
 .card-grid-3 .card-block-info .card-profile strong {
     font-size: 18px;
     color: #05264e;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     display: block;
 }
@@ -2481,7 +2481,7 @@ label {
 .card-grid-4 .btn-readmore {
     color: #05264e;
     font-size: 18px;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     text-decoration: none;
 }
@@ -2782,7 +2782,7 @@ ul li:last-child .card-list-4 {
     display: block;
     font-size: 14px;
     font-weight: bold;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .box-image-job .job-top-creator ul li .job-info-creator span {
@@ -2834,7 +2834,7 @@ ul li:last-child .card-list-4 {
 }
 
 .box-newsletter .box-form-newsletter form .font-heading {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 500;
 }
 
@@ -2850,7 +2850,7 @@ ul li:last-child .card-list-4 {
     color: #ffffff;
     font-size: 37px;
     line-height: 55px;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     margin-top: 10px;
 }
@@ -2859,7 +2859,7 @@ ul li:last-child .card-list-4 {
     color: #ffffff;
     font-size: 46px;
     line-height: 56px;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
 }
 
@@ -3215,7 +3215,7 @@ ul li:last-child .card-list-4 {
 
 .banner-hero .block-banner .list-tags-banner strong {
     font-weight: 700;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
     color: #4f5e64;
 }
@@ -3488,7 +3488,7 @@ ul li:last-child .card-list-4 {
 }
 
 .header .main-menu li a {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -3599,7 +3599,7 @@ ul li:last-child .card-list-4 {
 }
 
 .header .text-link-bd-btom {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -6248,7 +6248,7 @@ ul li:last-child .card-list-4 {
 }
 
 .heading-36 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 36px;
     line-height: 44px;
     font-weight: bold;
@@ -6261,7 +6261,7 @@ ul li:last-child .card-list-4 {
 }
 
 .text-blue {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 20px;
     color: #15a0df;
     font-weight: 600;
@@ -6426,7 +6426,7 @@ ul li:last-child .card-list-4 {
 
 .text-billed {
     font-weight: 500;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     display: inline-block;
     vertical-align: middle;
     color: #253d4e;
@@ -6494,7 +6494,7 @@ ul li:last-child .card-list-4 {
 .block-pricing .box-info-price .text-price {
     font-size: 44px;
     color: #15a0df;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     line-height: 56px;
     font-weight: 800;
     margin-right: 1px;
@@ -6562,7 +6562,7 @@ ul li:last-child .card-list-4 {
     font-size: 10px;
     color: #05264e;
     line-height: 12px;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .heading-md-regular {
@@ -6570,7 +6570,7 @@ ul li:last-child .card-list-4 {
     line-height: 24px;
     color: #05264e;
     font-weight: 500;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .box-info-job .text-md {
@@ -7212,7 +7212,7 @@ ul li:last-child .card-list-4 {
     .sidebar-info
     .sidebar-company {
     font-size: 18px;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     line-height: 18px;
     font-weight: bold;
     display: block;
@@ -7768,7 +7768,7 @@ ul li:last-child .card-list-4 {
     outline: none;
     font-size: 12px;
     font-weight: 500;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .dropdown-sort .dropdown-toggle:focus {
@@ -7903,7 +7903,7 @@ ul li:last-child .card-list-4 {
     font-weight: 600;
     font-size: 10px;
     color: #4f5e64;
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .job-list-list .list-recent-jobs {
@@ -8177,7 +8177,7 @@ ul li:last-child .card-list-4 {
     background: #ffffff;
     /* border-bottom: 1px solid #E0E6F7; */
     /* border-radius: 8px; */
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 12px;
     font-weight: 700;
     line-height: 18px;
@@ -9649,7 +9649,7 @@ ul li:last-child .card-list-4 {
     --colorWhite: #ffffff;
     --paraColor: #4f5e64;
     --lightBg: #e0e6f7;
-    --bodyFont: "Plus Jakarta Sans", sans-serif;
+    --bodyFont: "Roboto", sans-serif;
 }
 
 .header .main-menu li.has-children > a::after {

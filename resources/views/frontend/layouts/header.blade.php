@@ -38,7 +38,7 @@
                     @auth
                         <a class="btn btn-default btn-shadow ml-40 hover-up"
                             href="{{ auth()->user()->role == 'candidate' ? route('candidate.dashboard') : route('company.dashboard') }}"
-                            style="width: 225px">{{ auth()->user()->role == 'candidate' ? 'Thông tin người ứng tuyển' : 'Thông tin doanh nghiệp' }}</a>
+                            style="width: 235px; letter-spacing: 0.5px">{{ auth()->user()->role == 'candidate' ? 'Thông tin người ứng tuyển' : 'Thông tin doanh nghiệp' }}</a>
                     @endauth
                 </div>
             </div>

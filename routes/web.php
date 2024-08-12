@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\CandidateDashboardController;
+use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -25,6 +26,27 @@ Route::get('/', [HomeController::class, "index"])->name("home");
 // Candidate
 Route::prefix("candidate")->as("candidate.")->middleware(["auth", "verified", "role:candidate"])->group(function () {
   Route::get('dashboard', [CandidateDashboardController::class, "index"])->name('dashboard');
+  Route::get("profile", [CandidateProfileController::class, "index"])->name("profile.index");
+  Route::post("profile/info", [CandidateProfileController::class, "updateInfo"])->name("profile.update-info");
+  Route::post("profile/contact", [CandidateProfileController::class, "updateContact"])->name("profile.update-contact");
+  Route::post("profile/other", [CandidateProfileController::class, "updateOther"])->name("profile.update-other");
+
+  Route::get("profile/get-education", [CandidateProfileController::class, "getEducation"])->name("profile.get-education");
+  Route::post("profile/create-education", [CandidateProfileController::class, "createEducation"])->name("profile.create-education");
+  Route::get("profile/edit-education/{id}", [CandidateProfileController::class, "editEducation"])->name("profile.edit-education");
+  Route::post("profile/update-education/{id}", [CandidateProfileController::class, "updateEducation"])->name("profile.update-education");
+  Route::delete("profile/delete-education/{id}", [CandidateProfileController::class, "deleteEducation"])->name("profile.delete-education");
+
+  Route::get("profile/get-work", [CandidateProfileController::class, "getWork"])->name("profile.get-work");
+  Route::post("profile/create-work", [CandidateProfileController::class, "createWork"])->name("profile.create-work");
+  Route::get("profile/edit-work/{id}", [CandidateProfileController::class, "editWork"])->name("profile.edit-work");
+  Route::post("profile/update-work/{id}", [CandidateProfileController::class, "updateWork"])->name("profile.update-work");
+  Route::delete("profile/delete-work/{id}", [CandidateProfileController::class, "deleteWork"])->name("profile.delete-work");
+
+  Route::post("profile/change-email", [CandidateProfileController::class, "updateEmail"])->name("profile.update-email");
+  Route::post("profile/change-password", [CandidateProfileController::class, "updatePassword"])->name("profile.update-password");
+
+  Route::get("change-type-tab", [CandidateProfileController::class, "changeTypeTab"])->name("change-type-tab");
 });
 
 // Company

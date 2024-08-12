@@ -51,6 +51,29 @@
                             href="{{ route('admin.commune-wards.index') }}">Phường/Xã</a></li>
                 </ul>
             </li>
+            <li
+                class="{{ setActive(['admin.languages.*', 'admin.professions.*', 'admin.commune-wards.*', 'admin.employment-levels.*', 'admin.desired-salaries.*', 'admin.soft-skills.*', 'admin.experiences.*', 'admin.academic-levels.*']) }}">
+                <a href="javascript:void(0);" class="menu-toggle d-flex align-items-center">
+                    <i class="zmdi zmdi-library"></i>
+                    <span class="font-bold">QL Thông Tin Ứng Viên</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ setSubActive(['admin.academic-levels.*']) }}"> <a
+                            href="{{ route('admin.academic-levels.index') }}">Trình độ học vấn</a></li>
+                    <li class="{{ setSubActive(['admin.languages.*']) }}"> <a
+                            href="{{ route('admin.languages.index') }}">Ngoại ngữ thành thạo</a></li>
+                    <li class="{{ setSubActive(['admin.professions.*']) }}"> <a
+                            href="{{ route('admin.professions.index') }}">Lĩnh vực nghề nghiệp</a></li>
+                    <li class="{{ setSubActive(['admin.employment-levels.*']) }}"> <a
+                            href="{{ route('admin.employment-levels.index') }}">Cấp bậc việc làm</a></li>
+                    <li class="{{ setSubActive(['admin.desired-salaries.*']) }}"> <a
+                            href="{{ route('admin.desired-salaries.index') }}">Mức lương mong muốn</a></li>
+                    <li class="{{ setSubActive(['admin.soft-skills.*']) }}"> <a
+                            href="{{ route('admin.soft-skills.index') }}">Kỹ năng mềm</a></li>
+                    <li class="{{ setSubActive(['admin.experiences.*']) }}"> <a
+                            href="{{ route('admin.experiences.index') }}">Kinh nghiệm làm việc</a></li>
+                </ul>
+            </li>
             {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span
                         class="font-bold">Widgets</span> </a>
                 <ul class="ml-menu">
