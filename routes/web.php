@@ -4,6 +4,8 @@ use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
+use App\Http\Controllers\Frontend\FrontendCandidateController;
+use App\Http\Controllers\Frontend\FrontendCompanyController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +24,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, "index"])->name("home");
+
+// Company List
+Route::get("companies", [FrontendCompanyController::class, "index"])->name("companies.index");
+Route::get("company-info/{slug}", [FrontendCompanyController::class, "show"])->name("company-info.show");
+
+// Candidate List
+Route::get("candidates", [FrontendCandidateController::class, "index"])->name("candidates.index");
+Route::get("candidate-info/{slug}", [FrontendCandidateController::class, "show"])->name("candidate-info.show");
 
 // Candidate
 Route::prefix("candidate")->as("candidate.")->middleware(["auth", "verified", "role:candidate"])->group(function () {

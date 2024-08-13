@@ -94,7 +94,7 @@ namespace App\Models{
  * @property string|null $fb_link
  * @property string|null $title
  * @property int|null $profession_id
- * @property string|null $academic_level_id
+ * @property int|null $academic_level_id
  * @property int|null $experience_id
  * @property int|null $education_id
  * @property int|null $experience_work_id
@@ -105,14 +105,24 @@ namespace App\Models{
  * @property int $status
  * @property int $profile_completed
  * @property int $view_count
+ * @property int $allow_show
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\AcademicLevel|null $academicLevel
+ * @property-read \App\Models\District|null $candidateDistrict
+ * @property-read \App\Models\ProvinceCity|null $candidateProvince
+ * @property-read \App\Models\CommuneWard|null $candidateWard
+ * @property-read \App\Models\DesiredSalary|null $desiredSalary
+ * @property-read \App\Models\EmploymentLevel|null $employmentLevel
+ * @property-read \App\Models\Experience|null $experience
+ * @property-read \App\Models\Profession|null $profession
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate query()
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereAcademicLevelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereAdvancedSkills($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereAllowShow($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereBio($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereBirthday($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Candidate whereCareerGoals($value)
@@ -204,6 +214,37 @@ namespace App\Models{
 /**
  * 
  *
+ * @property int $id
+ * @property int $candidate_id
+ * @property string|null $name_company
+ * @property string|null $position
+ * @property string|null $start_date
+ * @property string|null $end_date
+ * @property int $current_working
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork whereCandidateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork whereCurrentWorking($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork whereNameCompany($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CandidateWork whereUpdatedAt($value)
+ */
+	class CandidateWork extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property string $code
  * @property string $name
  * @property string|null $name_en
@@ -264,6 +305,12 @@ namespace App\Models{
  * @property string|null $website_link
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\District|null $companyDistrict
+ * @property-read \App\Models\ProvinceCity|null $companyProvince
+ * @property-read \App\Models\CommuneWard|null $companyWard
+ * @property-read \App\Models\IndustryType $industry
+ * @property-read \App\Models\OrganizationType $organization
+ * @property-read \App\Models\TeamSize $teamSize
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Company query()
