@@ -102,3 +102,8 @@ function isCandidateProfileCompleted()
 
   return false;
 }
+
+function formatMoney($number)
+{
+  return number_format($number, 0, ',', '.') . ' ₫';
+}

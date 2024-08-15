@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
+use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\ProvinceCityController;
 use App\Http\Controllers\Admin\SoftSkillController;
@@ -102,5 +103,8 @@ Route::prefix('admin')->as('admin.')->group(function () {
     // Academic level
     Route::put("academic-levels/change-status", [AcademicLevelController::class, "changeStatus"])->name("academic-levels.change-status");
     Route::resource("academic-levels", AcademicLevelController::class);
+
+    // Plan
+    Route::resource("plans", PlanController::class);
   });
 });

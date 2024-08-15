@@ -2,13 +2,13 @@
     <div class="container">
         <div class="main-header">
             <div class="header-left">
-                <div class="header-logo"><a class="d-flex" href="index.html"><img alt="joblist"
+                <div class="header-logo"><a class="d-flex" href="{{ route('home') }}"><img alt="joblist"
                             src="{{ asset('logo.jpg') }}"></a></div>
             </div>
             <div class="header-nav">
                 <nav class="nav-main-menu">
                     <ul class="main-menu">
-                        <li class="has-children"><a href="index.html">Home</a></li>
+                        <li class="has-children"><a href="{{ route('home') }}">Home</a></li>
                         <li class="has-children"><a href="jobs-list.html">Tìm việc</a></li>
                         <li class="has-children"><a class="{{ setSubActive(['companies.*']) }}"
                                 href="{{ route('companies.index') }}">Doanh nghiệp</a></li>

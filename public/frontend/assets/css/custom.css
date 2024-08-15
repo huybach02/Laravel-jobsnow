@@ -114,3 +114,18 @@ ul.timeline > li:before {
     height: 20px;
     z-index: 400;
 }
+
+.box-pricing-item {
+    position: relative;
+}
+
+.box-pricing-item .recommend {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #33d667;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 10px;
+}

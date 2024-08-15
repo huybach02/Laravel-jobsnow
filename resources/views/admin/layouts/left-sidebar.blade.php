@@ -74,14 +74,17 @@
                             href="{{ route('admin.experiences.index') }}">Kinh nghiệm làm việc</a></li>
                 </ul>
             </li>
-            {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span
+            <li class="{{ setActive(['admin.plans.*']) }}"> <a href="{{ route('admin.plans.index') }}"
+                    class="d-flex align-items-center"><i class="zmdi zmdi-view-carousel"></i><span class="font-bold">QL
+                        Gói Dịch Vụ</span> </a>
+                {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span
                         class="font-bold">Widgets</span> </a>
                 <ul class="ml-menu">
                     <li> <a href="basic.html">Basic</a></li>
                     <li> <a href="more-widgets.html">More Widgets</a></li>
                 </ul>
             </li> --}}
-            {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-trending-down"></i><span>Multi
+                {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-trending-down"></i><span>Multi
                         Level Menu</span> </a>
                 <ul class="ml-menu">
                     <li> <a href="javascript:void(0);"> <span>Menu Item</span> </a> </li>
