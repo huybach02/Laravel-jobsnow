@@ -303,6 +303,10 @@ namespace App\Models{
  * @property int $status
  * @property string|null $fb_link
  * @property string|null $website_link
+ * @property float|null $limit_post
+ * @property float|null $used_post
+ * @property float|null $limit_featured_post
+ * @property float|null $used_featured_post
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\District|null $companyDistrict
@@ -326,6 +330,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereIndustryTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereIsProfileVerified($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereLimitFeaturedPost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereLimitPost($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereLogo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereMapLink($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereName($value)
@@ -339,6 +345,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereTeamSizeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereTotalViews($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereUsedFeaturedPost($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Company whereUsedPost($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereVisibility($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereVision($value)
@@ -346,6 +354,39 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Company whereWebsiteLink($value)
  */
 	class Company extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $company_id
+ * @property int $plan_id
+ * @property string $plan_name
+ * @property float $plan_price
+ * @property float $job_count
+ * @property float $featured_job_count
+ * @property int $company_featured_show
+ * @property int $company_verified_show
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan whereCompanyFeaturedShow($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan whereCompanyVerifiedShow($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan whereFeaturedJobCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan whereJobCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan wherePlanId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan wherePlanName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan wherePlanPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPlan whereUpdatedAt($value)
+ */
+	class CompanyPlan extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -500,6 +541,50 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $order_id
+ * @property int $company_id
+ * @property int $plan_id
+ * @property string $plan_name
+ * @property float $price
+ * @property string $transaction_id
+ * @property string $method
+ * @property string $currency_name
+ * @property string $status
+ * @property float $job_count
+ * @property float $featured_job_count
+ * @property int $company_featured_show
+ * @property int $company_verified_show
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Company $company
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCompanyFeaturedShow($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCompanyVerifiedShow($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCurrencyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereFeaturedJobCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereJobCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePlanId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePlanName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereTransactionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+ */
+	class Order extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $slug
  * @property int $status
@@ -516,6 +601,39 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationType whereUpdatedAt($value)
  */
 	class OrganizationType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $label
+ * @property int $price
+ * @property int $job_count
+ * @property int $featured_job_count
+ * @property int $company_featured_show
+ * @property int $company_verified_show
+ * @property int $recommended
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereCompanyFeaturedShow($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereCompanyVerifiedShow($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereFeaturedJobCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereJobCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereLabel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereRecommended($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereUpdatedAt($value)
+ */
+	class Plan extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -633,6 +751,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Candidate|null $candidate
+ * @property-read \App\Models\Company|null $company
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens

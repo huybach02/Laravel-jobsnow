@@ -42,6 +42,12 @@ return new class extends Migration
       $table->boolean("status")->default(0);
       $table->text("fb_link")->nullable();
       $table->text("website_link")->nullable();
+
+      $table->double("limit_post")->default(0);
+      $table->double("used_post")->default(0);
+      $table->double("limit_featured_post")->default(0);
+      $table->double("used_featured_post")->default(0);
+
       $table->timestamps();
     });
   }

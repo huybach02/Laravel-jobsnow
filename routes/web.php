@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
+use App\Http\Controllers\Frontend\CompanyOrderController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\FrontendCandidateController;
 use App\Http\Controllers\Frontend\FrontendCompanyController;
@@ -68,6 +70,11 @@ Route::prefix("company")->as("company.")->middleware(["auth", "verified", "role:
   Route::post("profile/change-email", [CompanyProfileController::class, "updateEmail"])->name("profile.update-email");
   Route::post("profile/change-password", [CompanyProfileController::class, "updatePassword"])->name("profile.update-password");
   Route::get("change-type-tab", [CompanyProfileController::class, "changeTypeTab"])->name("change-type-tab");
+  Route::get("checkout/{plan_id}", [CheckoutController::class, "index"])->name("checkout");
+  Route::post("vnpay-payment", [CheckoutController::class, "vnpayPayment"])->name("vnpay.payment");
+  Route::get("payment-success/{id}", [CheckoutController::class, "paymentSuccess"])->name("payment.success");
+  Route::get("orders", [CompanyOrderController::class, "index"])->name("orders.index");
+  Route::get("orders/{id}", [CompanyOrderController::class, "show"])->name("orders.show");
 });
 
 // Upload File Tinymce

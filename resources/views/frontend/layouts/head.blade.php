@@ -10,3 +10,4 @@
 <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet">
 </link>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">

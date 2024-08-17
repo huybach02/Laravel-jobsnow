@@ -56,14 +56,15 @@
                                                     thực doanh
                                                     nghiệp"</li>
                                             </ul>
-                                            <div><a class="btn btn-border" href="{{ route('register') }}">Choose plan</a>
+                                            <div><a class="btn btn-border"
+                                                    href="{{ route('company.checkout', $plan->id) }}">Mua ngay</a>
                                             </div>
                                         </div>
                                     </div>
                                 @endif
                             @else
                                 <div class="col-xl-4 col-lg-6 col-md-6 wow animate__animated animate__fadeInUp">
-                                    <div class="box-pricing-item">
+                                    <div class="box-pricing-item" style="height: 563px">
                                         <h3>{{ $plan->label }}</h3>
                                         <div class="box-info-price">
                                             <span
@@ -79,8 +80,14 @@
                                                 "Đã xác
                                                 thực doanh
                                                 nghiệp"</li>
+                                            @if ($plan->price == 0)
+                                                <li class="font-bold">Cập nhật đầy đủ thông tin doanh nghiệp để nhận miễn
+                                                    phí 1 tin tuyển dụng
+                                                </li>
+                                            @endif
                                         </ul>
-                                        <div><a class="btn btn-border" href="{{ route('register') }}">Choose plan</a>
+                                        <div><a class="btn btn-border"
+                                                href="{{ route('company.checkout', $plan->id) }}">{{ $plan->price == 0 ? 'Nhận miễn phí' : 'Mua ngay' }}</a>
                                         </div>
                                     </div>
                                 </div>

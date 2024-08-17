@@ -78,6 +78,7 @@ class CompanyProfileController extends Controller
     if (isCompanyProfileCompleted()) {
       $company->profile_completed = 1;
       $company->status = 1;
+      $company->limit_post = $company->limit_post == 0 ? 1 : $company->limit_post;
       $company->save();
     }
 
@@ -108,6 +109,7 @@ class CompanyProfileController extends Controller
     if (isCompanyProfileCompleted()) {
       $company->profile_completed = 1;
       $company->status = 1;
+      $company->limit_post = $company->limit_post == 0 ? 1 : $company->limit_post;
       $company->save();
     }
 

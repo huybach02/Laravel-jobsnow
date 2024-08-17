@@ -203,6 +203,27 @@
             });
         })
     </script>
+
+    <script>
+        new DataTable('#example', {
+            "order": [
+                [1, "desc"]
+            ],
+            columnDefs: [{
+                    targets: 1,
+                    visible: false
+                } // Ẩn cột id
+            ],
+            language: {
+                "search": "Tìm kiếm",
+                "lengthMenu": "_MENU_ Dữ liệu/Trang ",
+                "info": "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                "infoEmpty": "Hiển thị 0 đến 0 trong tổng số 0 mục",
+                "infoFiltered": "(được lọc từ _MAX_ mục)",
+                "zeroRecords": "Không tìm thấy kết quả phù hợp"
+            }
+        });
+    </script>
 </body>
 
 </html>

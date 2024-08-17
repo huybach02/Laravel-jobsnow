@@ -8,6 +8,10 @@
             <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2 {{ setSubActive(['company.profile.*']) }}"
                     href="{{ route('company.profile.index') }}"><i class="fas fa-address-card"
                         style="font-size: 16px"></i> Thông Tin Doanh Nghiệp</a></li>
+            <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2 {{ setSubActive(['company.orders.*']) }}"
+                    href="{{ route('company.orders.index') }}"><i class="fas fa-boxes" style="font-size: 16px"></i>
+                    Gói
+                    Dịch Vụ Đã Mua</a></li>
             <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2" href="candidate-profile-jobs.html"><i
                         class="fas fa-check-square" style="font-size: 16px"></i> Công việc đã ứng
                     tuyển</a></li>

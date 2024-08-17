@@ -77,6 +77,10 @@
             <li class="{{ setActive(['admin.plans.*']) }}"> <a href="{{ route('admin.plans.index') }}"
                     class="d-flex align-items-center"><i class="zmdi zmdi-view-carousel"></i><span class="font-bold">QL
                         Gói Dịch Vụ</span> </a>
+            <li class="{{ setActive(['admin.orders.*']) }}"> <a href="{{ route('admin.orders.index') }}"
+                    class="d-flex align-items-center"><i class="zmdi zmdi-collection-text"></i><span
+                        class="font-bold">QL
+                        Đơn Hàng</span> </a>
                 {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span
                         class="font-bold">Widgets</span> </a>
                 <ul class="ml-menu">

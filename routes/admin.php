@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\EmploymentLevelController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
@@ -106,5 +107,9 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
     // Plan
     Route::resource("plans", PlanController::class);
+
+    // Orders
+    Route::get("orders", [OrderController::class, "index"])->name("orders.index");
+    Route::get("orders/{id}", [OrderController::class, "show"])->name("orders.show");
   });
 });
