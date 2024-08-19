@@ -12,9 +12,9 @@
                     href="{{ route('company.orders.index') }}"><i class="fas fa-boxes" style="font-size: 16px"></i>
                     Gói
                     Dịch Vụ Đã Mua</a></li>
-            <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2" href="candidate-profile-jobs.html"><i
-                        class="fas fa-check-square" style="font-size: 16px"></i> Công việc đã ứng
-                    tuyển</a></li>
+            <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2 {{ setSubActive(['company.jobs.*']) }}"
+                    href="{{ route('company.jobs.index') }}"><i class="fas fa-clipboard" style="font-size: 16px"></i>
+                    Quản Lý Tin Tuyển Dụng</a></li>
             <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2"
                     href="candidate-profile-save-jobs.html"><i class="fas fa-bookmark" style="font-size: 16px"></i> Công
                     việc đã lưu</a>

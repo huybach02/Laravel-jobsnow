@@ -17,14 +17,17 @@ use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\EmploymentLevelController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\IndustryTypeController;
+use App\Http\Controllers\Admin\JobCategoryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\ProvinceCityController;
+use App\Http\Controllers\Admin\SalaryStructureController;
 use App\Http\Controllers\Admin\SoftSkillController;
 use App\Http\Controllers\Admin\TeamSizeController;
+use App\Http\Controllers\Admin\WorkModeController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->as('admin.')->group(function () {
@@ -111,5 +114,37 @@ Route::prefix('admin')->as('admin.')->group(function () {
     // Orders
     Route::get("orders", [OrderController::class, "index"])->name("orders.index");
     Route::get("orders/{id}", [OrderController::class, "show"])->name("orders.show");
+
+    // Job Category
+    Route::put("job-categories/change-status", [JobCategoryController::class, "changeStatus"])->name("job-categories.change-status");
+    Route::resource("job-categories", JobCategoryController::class);
+
+    // Education Category
+    Route::put("academic-levels-list/change-status", [AcademicLevelController::class, "changeStatus"])->name("academic-levels-list.change-status");
+    Route::resource("academic-levels-list", AcademicLevelController::class);
+
+    // Employment Level Job Category
+    Route::put("employment-levels-list/change-status", [EmploymentLevelController::class, "changeStatus"])->name("employment-levels-list.change-status");
+    Route::resource("employment-levels-list", EmploymentLevelController::class);
+
+    // Experience Job Category
+    Route::put("experiences-list/change-status", [ExperienceController::class, "changeStatus"])->name("experiences-list.change-status");
+    Route::resource("experiences-list", ExperienceController::class);
+
+    // Soft Skill Job Category
+    Route::put("soft-skills-list/change-status", [SoftSkillController::class, "changeStatus"])->name("soft-skills-list.change-status");
+    Route::resource("soft-skills-list", SoftSkillController::class);
+
+    // Languages Category
+    Route::put("languages-list/change-status", [LanguageController::class, "changeStatus"])->name("languages-list.change-status");
+    Route::resource("languages-list", LanguageController::class);
+
+    // Salary Structure
+    Route::put("salary-structures/change-status", [SalaryStructureController::class, "changeStatus"])->name("salary-structures.change-status");
+    Route::resource("salary-structures", SalaryStructureController::class);
+
+    // Work Mode
+    Route::put("work-modes/change-status", [WorkModeController::class, "changeStatus"])->name("work-modes.change-status");
+    Route::resource("work-modes", WorkModeController::class);
   });
 });

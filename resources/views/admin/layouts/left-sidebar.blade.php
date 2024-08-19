@@ -55,7 +55,7 @@
                 class="{{ setActive(['admin.languages.*', 'admin.professions.*', 'admin.commune-wards.*', 'admin.employment-levels.*', 'admin.desired-salaries.*', 'admin.soft-skills.*', 'admin.experiences.*', 'admin.academic-levels.*']) }}">
                 <a href="javascript:void(0);" class="menu-toggle d-flex align-items-center">
                     <i class="zmdi zmdi-library"></i>
-                    <span class="font-bold">QL Thông Tin Ứng Viên</span>
+                    <span class="font-bold">QL TT Ứng Viên</span>
                 </a>
                 <ul class="ml-menu">
                     <li class="{{ setSubActive(['admin.academic-levels.*']) }}"> <a
@@ -81,30 +81,31 @@
                     class="d-flex align-items-center"><i class="zmdi zmdi-collection-text"></i><span
                         class="font-bold">QL
                         Đơn Hàng</span> </a>
-                {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span
-                        class="font-bold">Widgets</span> </a>
+            </li>
+            <li
+                class="{{ setActive(['admin.job-categories.*', 'admin.academic-levels-list.*', 'admin.employment-levels-list.*', 'admin.experiences-list.*', 'admin.soft-skills-list.*', 'admin.languages-list.*', 'admin.salary-structures.*', 'admin.work-modes.*']) }}">
+                <a href="javascript:void(0);" class="menu-toggle d-flex align-items-center">
+                    <i class="zmdi zmdi-assignment"></i>
+                    <span class="font-bold">QL TT Tuyến Dụng</span>
+                </a>
                 <ul class="ml-menu">
-                    <li> <a href="basic.html">Basic</a></li>
-                    <li> <a href="more-widgets.html">More Widgets</a></li>
+                    <li class="{{ setSubActive(['admin.job-categories.*']) }}"> <a
+                            href="{{ route('admin.job-categories.index') }}">Danh mục tuyến dụng</a></li>
+                    <li class="{{ setSubActive(['admin.academic-levels-list.*']) }}"> <a
+                            href="{{ route('admin.academic-levels-list.index') }}">Trình độ học vấn</a></li>
+                    <li class="{{ setSubActive(['admin.employment-levels-list.*']) }}"> <a
+                            href="{{ route('admin.employment-levels-list.index') }}">Cấp bậc việc làm</a></li>
+                    <li class="{{ setSubActive(['admin.experiences-list.*']) }}"> <a
+                            href="{{ route('admin.experiences-list.index') }}">Kinh nghiệm làm việc</a></li>
+                    <li class="{{ setSubActive(['admin.soft-skills-list.*']) }}"> <a
+                            href="{{ route('admin.soft-skills-list.index') }}">Kỹ năng mềm</a></li>
+                    <li class="{{ setSubActive(['admin.languages-list.*']) }}"> <a
+                            href="{{ route('admin.languages-list.index') }}">Ngoại ngữ thành thạo</a></li>
+                    <li class="{{ setSubActive(['admin.salary-structures.*']) }}"> <a
+                            href="{{ route('admin.salary-structures.index') }}">Hình thức trả lương</a></li>
+                    <li class="{{ setSubActive(['admin.work-modes.*']) }}"> <a
+                            href="{{ route('admin.work-modes.index') }}">Hình thức làm việc</a></li>
                 </ul>
-            </li> --}}
-                {{-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-trending-down"></i><span>Multi
-                        Level Menu</span> </a>
-                <ul class="ml-menu">
-                    <li> <a href="javascript:void(0);"> <span>Menu Item</span> </a> </li>
-                    <li> <a href="javascript:void(0);"> <span>Menu Item - 2</span> </a> </li>
-                    <li> <a href="javascript:void(0);" class="menu-toggle"> <span>Level - 2</span> </a>
-                        <ul class="ml-menu">
-                            <li> <a href="javascript:void(0);"> <span>Menu Item</span> </a> </li>
-                            <li> <a href="javascript:void(0);" class="menu-toggle"> <span>Level - 3</span> </a>
-                                <ul class="ml-menu">
-                                    <li> <a href="javascript:void(0);"> <span>Level - 4</span> </a> </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li> --}}
             </li>
         </ul>
     </div>

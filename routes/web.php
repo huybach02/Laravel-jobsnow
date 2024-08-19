@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\FrontendCandidateController;
 use App\Http\Controllers\Frontend\FrontendCompanyController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\JobController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
@@ -75,6 +76,10 @@ Route::prefix("company")->as("company.")->middleware(["auth", "verified", "role:
   Route::get("payment-success/{id}", [CheckoutController::class, "paymentSuccess"])->name("payment.success");
   Route::get("orders", [CompanyOrderController::class, "index"])->name("orders.index");
   Route::get("orders/{id}", [CompanyOrderController::class, "show"])->name("orders.show");
+
+  Route::put("jobs/change-status", [JobController::class, "changeStatus"])->name("jobs.change-status");
+  Route::put("jobs/change-featured", [JobController::class, "changeFeatured"])->name("jobs.change-featured");
+  Route::resource('jobs', JobController::class);
 });
 
 // Upload File Tinymce

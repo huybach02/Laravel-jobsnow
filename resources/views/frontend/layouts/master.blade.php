@@ -148,10 +148,6 @@
     </script>
 
     <script>
-        $('#tags').tagsInput();
-    </script>
-
-    <script>
         $("body").on("click", ".delete-btn", function(e) {
             e.preventDefault();
             Swal.fire({
@@ -223,6 +219,152 @@
                 "zeroRecords": "Không tìm thấy kết quả phù hợp"
             }
         });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".province").on("change", function() {
+                let province_code = $(this).val();
+
+                $(".district").html('<option value="">-- Chọn quận/huyện --</option>');
+                $(".ward").html('<option value="">-- Chọn xã/phường --</option>');
+
+                let html = ""
+
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('get-districts', ':province_code') }}".replace(':province_code',
+                        province_code),
+                    success: function(data) {
+
+                        data.forEach(element => {
+                            html +=
+                                `<option value="${element.code}">${element.name}</option>`
+                        });
+
+                        $(".district").append(html);
+                    }
+                })
+            })
+
+            $(".district").on("change", function() {
+                let district_code = $(this).val();
+
+                $(".ward").html('<option value="">-- Chọn xã/phường --</option>');
+
+                let html = ""
+
+                $.ajax({
+                    method: "GET",
+                    url: "{{ route('get-wards', ':district_code') }}".replace(':district_code',
+                        district_code),
+                    success: function(data) {
+
+                        data.forEach(element => {
+                            html +=
+                                `<option value="${element.code}">${element.name}</option>`
+                        });
+
+                        $(".ward").append(html);
+                    }
+                })
+            })
+
+        })
+    </script>
+
+    <script>
+        $(".delete-btn").click(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "Bạn có chắc chắn muốn xoá?",
+                text: "Dữ liệu không thể khôi phục sau khi xoá",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Xác nhận xoá",
+                cancelButtonText: "Hủy"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        method: "DELETE",
+                        url: $(this).attr('href'),
+                        data: {
+                            _token: "{{ csrf_token() }}"
+                        },
+
+                        success: function(data) {
+
+                            if (data.success) {
+                                Swal.fire({
+                                    title: "Đã xoá thành công!",
+                                    text: "Dữ liệu đã được xoá thành công!",
+                                    icon: "success"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.reload();
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Có lỗi xảy ra!",
+                                    text: "Có lỗi xảy ra trong quá trình xoá dữ liệu. Vui lòng thử lại!",
+                                    icon: "error"
+                                })
+                            }
+
+                        },
+
+                        error: function(xhr, status, error) {
+                            console.log(error);
+                        }
+                    })
+                }
+
+            });
+        })
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("body").on('click', ".change-status", function() {
+                let isChecked = $(this).is(":checked")
+                let id = $(this).data('id')
+                let url = $(this).data('url')
+
+                $.ajax({
+                    url: url,
+                    method: "PUT",
+                    data: {
+                        id: id,
+                        status: isChecked,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            flasher.success(data.message, "Thành công")
+                        } else {
+                            sessionStorage.setItem('flasherMessage', data.message);
+                            sessionStorage.setItem('flasherType', 'error');
+                            window.location.reload();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                })
+            })
+
+            let flasherMessage = sessionStorage.getItem('flasherMessage');
+            let flasherType = sessionStorage.getItem('flasherType');
+
+            if (flasherMessage) {
+                flasher[flasherType](flasherMessage, "Cảnh báo");
+                sessionStorage.removeItem('flasherMessage');
+                sessionStorage.removeItem('flasherType');
+            }
+        })
     </script>
 </body>
 

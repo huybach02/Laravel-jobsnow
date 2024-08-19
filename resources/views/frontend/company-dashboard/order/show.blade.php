@@ -28,7 +28,7 @@
                         <h3 class="mt-0 mb-0 color-brand-1">Chi tiết đơn hàng <span
                                 class="text-primary">{{ $order->order_id }}</span></h3>
 
-                        <a href="{{ route('company.orders.index') }}" class="btn btn-primary mt-20">
+                        <a href="{{ route('company.orders.index') }}" class="btn btn-secondary mt-20">
                             <i class="fas fa-caret-left"></i> Quay lại</a>
 
                         <div class="row mt-30">

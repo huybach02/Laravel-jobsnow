@@ -518,6 +518,108 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property int $company_id
+ * @property string $job_category
+ * @property string $employment_level
+ * @property string $salary_structure
+ * @property float $salary_min
+ * @property float $salary_max
+ * @property string $deadline
+ * @property string $experience
+ * @property string $academic_level
+ * @property string $gender
+ * @property int $quantity
+ * @property string $work_mode
+ * @property int $province
+ * @property int $district
+ * @property int $ward
+ * @property string $address
+ * @property string $description
+ * @property string $requirement
+ * @property string $advanced_skills
+ * @property string $soft_skills
+ * @property string $foreign_languages
+ * @property string $benefits
+ * @property string $request_to_apply
+ * @property string $contact_person
+ * @property string $contact_email
+ * @property string $contact_phone
+ * @property int $view_count
+ * @property int $is_featured
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Job newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Job newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Job query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereAcademicLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereAdvancedSkills($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereBenefits($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereContactEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereContactPerson($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereContactPhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereDeadline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereDistrict($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereEmploymentLevel($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereExperience($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereForeignLanguages($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereIsFeatured($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereJobCategory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereProvince($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereRequestToApply($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereRequirement($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereSalaryMax($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereSalaryMin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereSalaryStructure($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereSoftSkills($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereViewCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereWard($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Job whereWorkMode($value)
+ */
+	class Job extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereUpdatedAt($value)
+ */
+	class JobCategory extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $slug
  * @property int $status
@@ -700,6 +802,29 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryStructure newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryStructure newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryStructure query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryStructure whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryStructure whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryStructure whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryStructure whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryStructure whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SalaryStructure whereUpdatedAt($value)
+ */
+	class SalaryStructure extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SoftSkill query()
@@ -772,5 +897,28 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|WorkMode newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WorkMode newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|WorkMode query()
+ * @method static \Illuminate\Database\Eloquent\Builder|WorkMode whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WorkMode whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WorkMode whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WorkMode whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WorkMode whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|WorkMode whereUpdatedAt($value)
+ */
+	class WorkMode extends \Eloquent {}
 }
 
