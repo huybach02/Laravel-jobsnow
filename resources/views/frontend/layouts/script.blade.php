@@ -16,6 +16,9 @@
 <script src="{{ asset('frontend/assets/js/plugins/counterup.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/bootstrap-tagsinput.js') }}"></script>
 <script src="{{ asset('frontend/assets/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/noUISlider.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/slider.js') }}"></script>
+
 
 <script src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
@@ -24,3 +27,5 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>

@@ -384,12 +384,12 @@
                                         <select class="form-control select-multiple-3" id="multiple" multiple
                                             name="foreign_languages[]">
                                             <option
-                                                {{ old('foreign_languages') == 'Không yêu cầu ngoại ngữ' || old('foreign_languages', $job->foreign_languages) == '' ? 'selected' : '' }}
+                                                {{ old('foreign_languages') == 'Không yêu cầu ngoại ngữ' || old('foreign_languages', $job->foreign_languages) == 'Không yêu cầu ngoại ngữ' ? 'selected' : '' }}
                                                 value="Không yêu cầu ngoại ngữ">Không yêu cầu ngoại ngữ</option>
                                             @foreach ($languages as $language)
                                                 <option
                                                     {{ in_array($language?->name, old('foreign_languages', explode(',', $job?->foreign_languages)) ?? []) ? 'selected' : '' }}
-                                                    value="{{ $language?->name }}">
+                                                    value="{{ $language?->id }}">
                                                     {{ $language?->name }}
                                                 </option>
                                             @endforeach

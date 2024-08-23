@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\CompanyOrderController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\FrontendCandidateController;
 use App\Http\Controllers\Frontend\FrontendCompanyController;
+use App\Http\Controllers\Frontend\FrontendJobController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\JobController;
 use App\Http\Controllers\Frontend\LocationController;
@@ -35,6 +36,10 @@ Route::get("company-info/{slug}", [FrontendCompanyController::class, "show"])->n
 // Candidate List
 Route::get("candidates", [FrontendCandidateController::class, "index"])->name("candidates.index");
 Route::get("candidate-info/{slug}", [FrontendCandidateController::class, "show"])->name("candidate-info.show");
+
+// Jobs
+Route::get("jobs", [FrontendJobController::class, "index"])->name("jobs.index");
+Route::get("jobs/{slug}", [FrontendJobController::class, "show"])->name("jobs.show");
 
 // Candidate
 Route::prefix("candidate")->as("candidate.")->middleware(["auth", "verified", "role:candidate"])->group(function () {

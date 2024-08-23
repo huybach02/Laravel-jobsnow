@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DesiredSalary extends Model
+class FeaturedPost extends Model
 {
-  use HasFactory;
+    use HasFactory;
 }

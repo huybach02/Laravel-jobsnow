@@ -366,6 +366,15 @@
             }
         })
     </script>
+
+    <script>
+        $("#rangeSlider").ionRangeSlider({
+            min: 1000000,
+            step: 1000000,
+            max: 100000000,
+            from: 550,
+        });
+    </script>
 </body>
 
 </html>

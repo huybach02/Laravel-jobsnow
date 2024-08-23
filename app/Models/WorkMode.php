@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class WorkMode extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  public function jobs()
+  {
+    return $this->hasMany(Job::class, "work_mode", "slug");
+  }
 }

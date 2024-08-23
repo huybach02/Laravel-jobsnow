@@ -368,8 +368,8 @@
                                                 value="Không yêu cầu ngoại ngữ">Không yêu cầu ngoại ngữ</option>
                                             @foreach ($languages as $language)
                                                 <option
-                                                    {{ in_array($language?->name, old('foreign_languages') ?? []) ? 'selected' : '' }}
-                                                    value="{{ $language?->name }}">
+                                                    {{ in_array($language?->id, old('foreign_languages') ?? []) ? 'selected' : '' }}
+                                                    value="{{ $language?->id }}">
                                                     {{ $language?->name }}
                                                 </option>
                                             @endforeach

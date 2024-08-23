@@ -312,3 +312,67 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%; /* Đảm bảo phần trượt có hình tròn */
 }
+
+.active > .page-link,
+.page-link.active {
+    background-color: #15a0df !important;
+    border-color: #15a0df !important;
+    color: #fff !important;
+}
+.page-link {
+    color: #15a0df !important;
+}
+
+.box-input-money input {
+    border: 1px solid #15a0df1a !important;
+    border-radius: 0;
+    height: 50px;
+    box-shadow: none;
+    padding-left: 0px;
+    font-size: 12px;
+    width: 100%;
+}
+.box-number-money {
+    display: none !important;
+}
+
+.filter-list li {
+    margin: 8px 0 8px 24px;
+}
+
+.filter-list {
+    list-style: square;
+}
+
+.list-checkbox .checkmark {
+    margin-top: 3px !important;
+}
+
+.irs--flat {
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+.irs--flat .irs-bar {
+    background-color: #15a0df !important;
+}
+.irs--flat .irs-handle > i:first-child {
+    background-color: #0e6f9c !important;
+}
+
+.irs--flat .irs-min,
+.irs--flat .irs-max {
+    font-size: 11px !important;
+}
+
+.irs--flat .irs-from,
+.irs--flat .irs-to,
+.irs--flat .irs-single {
+    font-size: 12px !important;
+}
+
+.irs--flat .irs-from,
+.irs--flat .irs-to,
+.irs--flat .irs-single {
+    background-color: #15a0df !important;
+    font-size: 12px;
+}

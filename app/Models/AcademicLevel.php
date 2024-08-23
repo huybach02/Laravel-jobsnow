@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class AcademicLevel extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  public function jobs()
+  {
+    return $this->hasMany(Job::class, "academic_level", "slug");
+  }
 }

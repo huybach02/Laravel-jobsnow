@@ -10,6 +10,7 @@ use App\Models\Company;
 use App\Models\District;
 use App\Models\EmploymentLevel;
 use App\Models\Experience;
+use App\Models\FeaturedPost;
 use App\Models\Job;
 use App\Models\JobCategory;
 use App\Models\Language;
@@ -152,7 +153,7 @@ class JobController extends Controller
     $jobCategories = implode(",", $request->job_category);
     $softSkills = implode(",", $request->soft_skills);
     $languageNames = Language::whereIn('id', $request->foreign_languages)->pluck('name')->toArray();
-    $foreignLanguages = implode(",", $languageNames);
+    $foreignLanguages = count($languageNames) == 0 ? "Không yêu cầu ngoại ngữ" : implode(",", $languageNames);
 
     $job->slug = $job->title !== $request->title ? Str::slug($request->title) . "-" . Str::random(5) : $job->slug;
     $job->title = $request->title;
@@ -197,6 +198,14 @@ class JobController extends Controller
     try {
       $job = Job::findOrFail($id);
       $job->delete();
+      $company = Company::find(auth()->user()->company->id);
+      $company->used_post = $company->used_post - 1;
+      $company->save();
+
+      if ($job->is_featured == 1) {
+        $company->used_featured_post = $company->used_featured_post - 1;
+        $company->save();
+      }
 
       return response([
         "success" => true,
@@ -236,8 +245,25 @@ class JobController extends Controller
     $job->is_featured = $request->status == "true" ? 1 : 0;
     $job->save();
 
-    $company->used_featured_post = $company->used_featured_post + 1;
-    $company->save();
+    $findFeaturedPost = FeaturedPost::where(["post_id" => $request->id, "company_id" => $company->id])->first();
+
+    if ($request->status == "true" && $findFeaturedPost == null) {
+
+      $featuredPost = new FeaturedPost();
+      $featuredPost->post_id = $request->id;
+      $featuredPost->company_id = auth()->user()->company->id;
+      $featuredPost->save();
+
+      $company->used_featured_post = $company->used_featured_post + 1;
+      $company->save();
+    }
+
+    if ($request->status == "false" && $findFeaturedPost != null) {
+
+      $findFeaturedPost->delete();
+      $company->used_featured_post = $company->used_featured_post - 1;
+      $company->save();
+    }
 
     return response([
       "success" => true,

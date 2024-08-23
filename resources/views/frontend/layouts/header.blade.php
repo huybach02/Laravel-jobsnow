@@ -9,7 +9,8 @@
                 <nav class="nav-main-menu">
                     <ul class="main-menu">
                         <li class="has-children"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="has-children"><a href="jobs-list.html">Tìm việc</a></li>
+                        <li class="has-children"><a class="{{ setSubActive(['jobs.*']) }}"
+                                href="{{ route('jobs.index') }}">Tìm việc</a></li>
                         <li class="has-children"><a class="{{ setSubActive(['companies.*']) }}"
                                 href="{{ route('companies.index') }}">Doanh nghiệp</a></li>
                         <li class="has-children"><a class="{{ setSubActive(['candidates.*']) }}"

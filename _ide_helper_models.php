@@ -21,6 +21,8 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel query()
@@ -454,6 +456,8 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel query()
@@ -477,6 +481,8 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|Experience newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Experience newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Experience query()
@@ -488,6 +494,27 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Experience whereUpdatedAt($value)
  */
 	class Experience extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $post_id
+ * @property int $company_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|FeaturedPost newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FeaturedPost newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FeaturedPost query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FeaturedPost whereCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FeaturedPost whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FeaturedPost whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FeaturedPost wherePostId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FeaturedPost whereUpdatedAt($value)
+ */
+	class FeaturedPost extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -551,6 +578,10 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Company $company
+ * @property-read \App\Models\District|null $jobDistrict
+ * @property-read \App\Models\ProvinceCity|null $jobProvince
+ * @property-read \App\Models\CommuneWard|null $jobWard
  * @method static \Illuminate\Database\Eloquent\Builder|Job newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Job newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Job query()
@@ -909,6 +940,8 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|WorkMode newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|WorkMode newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|WorkMode query()
