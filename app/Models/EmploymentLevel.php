@@ -13,4 +13,9 @@ class EmploymentLevel extends Model
   {
     return $this->hasMany(Job::class, "employment_level", "slug");
   }
+
+  public function candidates()
+  {
+    return $this->hasMany(Candidate::class, "employment_level_id", "id");
+  }
 }

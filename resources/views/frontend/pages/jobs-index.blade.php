@@ -291,6 +291,7 @@
     <script>
         $(document).ready(function() {
 
+            // Hàm debounce để tránh thực hiện quá nhiều yêu cầu liên tiếp
             function debounce(func, delay) {
                 let timeout;
                 return function(...args) {
@@ -333,7 +334,7 @@
                     academicLevels.push($(this).val());
                 });
 
-                // Xây dựng đối tượng các tham số truy vấn
+                // Đặt page thành 1 khi thay đổi filter
                 var queryParams = {
                     employment_levels: employmentLevels,
                     work_modes: workModes,
@@ -344,18 +345,19 @@
                     category: category,
                     min_value: minValue,
                     limit: limit,
-                    sort: sort
+                    sort: sort,
+                    page: 1 // Đặt page thành 1 để quay lại trang đầu
                 };
 
-                // Tạo chuỗi truy vấn từ đối tượng
+                // Tạo chuỗi truy vấn từ các tham số đã cập nhật
                 var queryString = buildQueryString(queryParams);
 
-                // Cập nhật URL của trình duyệt
+                // Cập nhật URL trình duyệt với tham số mới
                 history.pushState(null, '', '?' + queryString);
 
-                // Gọi API với các tham số truy vấn
+                // Thực hiện yêu cầu AJAX với các tham số đã cập nhật
                 $.ajax({
-                    url: "{{ route('jobs.index') }}", // URL API của bạn
+                    url: "{{ route('jobs.index') }}",
                     method: 'GET',
                     data: queryParams,
                     beforeSend: function() {
@@ -376,12 +378,15 @@
                 });
             }
 
-            var debounceHandleFilterChange = _.debounce(handleFilterChange, 300);
+            // Tạo phiên bản debounce của handleFilterChange
+            var debounceHandleFilterChange = debounce(handleFilterChange, 200);
 
-            // Gán sự kiện cho các phần tử lọc
-            $('.filter-checkbox, input[name="search"], select[name="province"], select[name="category"],#rangeSlider,select[name="limit"],select[name="sort"]')
-                .on(
-                    'change', debounceHandleFilterChange);
+            // Gán sự kiện cho các phần tử lọc và gọi debounceHandleFilterChange
+            $('.filter-checkbox, select[name="province"], select[name="category"], #rangeSlider, select[name="limit"], select[name="sort"]')
+                .on('change', debounceHandleFilterChange);
+
+            $('input[name="search"]')
+                .on('keyup', debounceHandleFilterChange);
 
             // Xử lý khi tải trang với các tham số truy vấn từ URL
             $(window).on('popstate', function() {
@@ -442,6 +447,50 @@
                     }
                 });
             }
+        });
+    </script>
+
+
+    <script>
+        $(document).on('click', '.pagination a', function(event) {
+            event.preventDefault();
+
+            // Lấy số trang từ liên kết được nhấn
+            var page = $(this).attr('href').split('page=')[1];
+
+            // Lấy các tham số lọc hiện tại từ URL
+            var queryParams = new URLSearchParams(window.location.search);
+
+            // Cập nhật tham số trang
+            queryParams.set('page', page);
+
+            // Xây dựng chuỗi truy vấn từ các tham số đã cập nhật
+            var queryString = queryParams.toString();
+
+            // Cập nhật URL trình duyệt với tham số trang mới
+            history.pushState(null, '', '?' + queryString);
+
+            // Thực hiện yêu cầu AJAX với trang được cập nhật và các bộ lọc hiện tại
+            $.ajax({
+                url: "{{ route('jobs.index') }}",
+                method: 'GET',
+                data: queryString,
+                beforeSend: function() {
+                    showPreloader(); // Hiển thị preloader trong khi chờ phản hồi
+                },
+                success: function(response) {
+                    $('.display-list').html(response); // Thay thế nội dung của danh sách công việc
+                    $('html, body').animate({
+                        scrollTop: 0 // Cuộn lên đầu trang
+                    }, 200);
+                },
+                error: function(xhr) {
+                    console.error("Đã xảy ra lỗi khi tải công việc trang mới."); // Xử lý lỗi nếu có
+                },
+                complete: function() {
+                    hidePreloader(); // Ẩn preloader sau khi hoàn tất yêu cầu
+                }
+            });
         });
     </script>
 @endpush

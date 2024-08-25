@@ -369,7 +369,7 @@
 
     <script>
         $("#rangeSlider").ionRangeSlider({
-            min: 1000000,
+            min: 100000,
             step: 1000000,
             max: 100000000,
             from: 550,

@@ -21,6 +21,8 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Candidate> $candidates
+ * @property-read int|null $candidates_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
  * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|AcademicLevel newModelQuery()
@@ -456,6 +458,8 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Candidate> $candidates
+ * @property-read int|null $candidates_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
  * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|EmploymentLevel newModelQuery()
@@ -481,6 +485,8 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Candidate> $candidates
+ * @property-read int|null $candidates_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
  * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|Experience newModelQuery()

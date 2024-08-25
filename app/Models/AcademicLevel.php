@@ -13,4 +13,9 @@ class AcademicLevel extends Model
   {
     return $this->hasMany(Job::class, "academic_level", "slug");
   }
+
+  public function candidates()
+  {
+    return $this->hasMany(Candidate::class, "academic_level_id", "id");
+  }
 }

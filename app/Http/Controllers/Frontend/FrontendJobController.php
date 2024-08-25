@@ -93,11 +93,13 @@ class FrontendJobController extends Controller
   public function show($slug)
   {
     $job = Job::where(["status" => 1])->where("slug", $slug)->first();
+    $similarJobs = Job::where(["status" => 1])->where("slug", "!=", $slug)->where("deadline", ">=", date("Y-m-d"))->where("company_id", $job->company_id)->get();
+    $countJobByCompany = Job::where(["status" => 1])->where("deadline", ">=", date("Y-m-d"))->where("company_id", $job->company_id)->count();
 
     if (!$job) {
       abort(404);
     }
 
-    return view('frontend.pages.jobs-show', compact('job'));
+    return view('frontend.pages.jobs-show', compact('job', 'similarJobs', 'countJobByCompany'));
   }
 }

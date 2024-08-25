@@ -61,6 +61,6 @@
 
 <div class="d-flex justify-content-center mt-70">
     @if ($jobs->hasPages())
-        {{ $jobs->links() }}
+        {{ $jobs->appends(request()->except('page'))->links() }}
     @endif
 </div>

@@ -17,7 +17,7 @@
         </div>
     </section>
 
-    <section class="section-box mt-120">
+    <section class="section-box mt-120 mb-120">
         <div class="container">
             <div class="content-page">
 
@@ -25,443 +25,168 @@
                     <div class="col-lg-3">
                         <div class="sidebar-shadow none-shadow mb-30">
                             <div class="sidebar-filters">
-                                <div class="filter-block mb-30">
-                                    <div class="filter-block head-border mb-30">
-                                        <h5>Advance Filter <a class="link-reset" href="#">Reset</a></h5>
+                                <div class="filter-block head-border mb-30">
+                                    <h5>BỘ LỌC NÂNG CAO <a class="link-reset" href="{{ route('candidates.index') }}">Xoá bộ
+                                            lọc</a>
+                                    </h5>
+                                </div>
+                                <form>
+                                    <div class="filter-block mb-20">
+                                        <div class="form-group select-style">
+                                            <label for="" class="font-bold">Tìm kiếm</label>
+                                            <input type="text" class="form-control" placeholder="Tìm kiếm công việc..."
+                                                name="search" value="{{ request('search') ?? '' }}">
+                                        </div>
                                     </div>
                                     <div class="filter-block mb-20">
                                         <div class="form-group select-style">
-                                            <select class="form-control form-icons select-active">
-                                                <option>New York, US</option>
-                                                <option>London</option>
-                                                <option>Paris</option>
-                                                <option>Berlin</option>
+                                            <label for="" class="font-bold">Tỉnh/Thành phố</label>
+                                            <select class="form-control form-icons select-active" name="province">
+                                                <option @selected(request('province') == '00') value="00">Tất cả</option>
+
+                                                @foreach ($provinces as $province)
+                                                    <option @selected(request('province') == $province?->code) value="{{ $province?->code }}">
+                                                        {{ $province?->name }}</option>
+                                                @endforeach
+
                                             </select>
                                         </div>
                                     </div>
                                     <div class="filter-block mb-30">
                                         <div class="form-group select-style">
-                                            <select class="form-control form-icons select-active">
-                                                <option>Industry</option>
-                                                <option>London</option>
-                                                <option>Paris</option>
-                                                <option>Berlin</option>
+                                            <label for="" class="font-bold">Danh mục nghề nghiệp</label>
+                                            <select class="form-control form-icons select-active" name="category">
+                                                <option @selected(request('category') == 'all') value="all">Tất cả</option>
+
+                                                @foreach ($jobCategories as $jobCategory)
+                                                    <option @selected(request('category') == $jobCategory?->id) value="{{ $jobCategory?->id }}">
+                                                        {{ $jobCategory?->name }}
+                                                    </option>
+                                                @endforeach
+
                                             </select>
-                                            <button class="submit btn btn-default mt-10 rounded-1 w-100"
-                                                type="submit">Search</button>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="filter-block mb-20">
-                                    <h5 class="medium-heading mb-15">Industry</h5>
+                                    {{-- <button class="submit btn btn-default rounded-1 w-100 mb-30" type="submit">Tìm
+                                    kiếm</button> --}}
+                                </form>
+                                <div class="filter-block mb-30">
+                                    <h5 class="medium-heading mb-10">Cấp bậc/chức vụ</h5>
                                     <div class="form-group">
                                         <ul class="list-checkbox">
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox" checked="checked"><span
-                                                        class="text-small">All</span><span class="checkmark"></span>
-                                                </label><span class="number-item">180</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Software</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">12</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Finance</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">23</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Recruting</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">43</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Management</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">65</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Advertising</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">76</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="filter-block mb-20">
-                                    <h5 class="medium-heading mb-25">Salary Range</h5>
-                                    <div class="list-checkbox pb-20">
-                                        <div class="row position-relative mt-10 mb-20">
-                                            <div class="col-sm-12 box-slider-range">
-                                                <div id="slider-range"></div>
-                                            </div>
-                                            <div class="box-input-money">
-                                                <input class="input-disabled form-control min-value-money" type="text"
-                                                    name="min-value-money" disabled="disabled" value="">
-                                                <input class="form-control min-value" type="hidden" name="min-value"
-                                                    value="">
-                                            </div>
-                                        </div>
-                                        <div class="box-number-money">
-                                            <div class="row mt-30">
-                                                <div class="col-sm-6 col-6"><span class="font-sm color-brand-1">$0</span>
-                                                </div>
-                                                <div class="col-sm-6 col-6 text-end"><span
-                                                        class="font-sm color-brand-1">$500</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-20">
-                                        <ul class="list-checkbox">
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox" checked="checked"><span
-                                                        class="text-small">All</span><span class="checkmark"></span>
-                                                </label><span class="number-item">145</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">$0k - $20k</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">56</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">$20k - $40k</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">37</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">$40k -
-                                                        $60k</span><span class="checkmark"></span>
-                                                </label><span class="number-item">75</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">$60k -
-                                                        $80k</span><span class="checkmark"></span>
-                                                </label><span class="number-item">98</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">$80k -
-                                                        $100k</span><span class="checkmark"></span>
-                                                </label><span class="number-item">14</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">$100k -
-                                                        $200k</span><span class="checkmark"></span>
-                                                </label><span class="number-item">25</span>
-                                            </li>
+                                            {{-- <li>
+                                            <label class="cb-container d-flex align-items-center">
+                                                <input class="filter-checkbox" type="checkbox" value="all"
+                                                    checked="checked" name="employment_level" style="margin-top: 10px">
+                                                <span class="text-small">Tất cả</span>
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="number-item">{{ count($jobs) }}</span>
+                                        </li> --}}
+
+                                            @foreach ($employmentLevels as $employmentLevel)
+                                                <li>
+                                                    <label class="cb-container">
+                                                        <input class="filter-checkbox" type="checkbox"
+                                                            value="{{ $employmentLevel->id }}" name="employment_level"><span
+                                                            class="text-small">{{ $employmentLevel->name }}</span><span
+                                                            class="checkmark"></span>
+                                                    </label><span
+                                                        class="number-item">{{ $employmentLevel->candidates_count }}</span>
+                                                </li>
+                                            @endforeach
+
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="filter-block mb-30">
-                                    <h5 class="medium-heading mb-10">Popular Keyword</h5>
+                                    <h5 class="medium-heading mb-20">Kinh nghiệm làm việc</h5>
                                     <div class="form-group">
                                         <ul class="list-checkbox">
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox" checked="checked"><span
-                                                        class="text-small">Software</span><span class="checkmark"></span>
-                                                </label><span class="number-item">24</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Developer</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">45</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Web</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">57</span>
-                                            </li>
+                                            {{-- <li>
+                                            <label class="cb-container d-flex align-items-center">
+                                                <input class="filter-checkbox" type="checkbox" value="all"
+                                                    checked="checked" name="experience" style="margin-top: 10px">
+                                                <span class="text-small">Tất cả</span>
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="number-item">{{ count($jobs) }}</span>
+                                        </li> --}}
+
+                                            @foreach ($experiences as $experience)
+                                                <li>
+                                                    <label class="cb-container">
+                                                        <input class="filter-checkbox" type="checkbox"
+                                                            value="{{ $experience->id }}" name="experience"><span
+                                                            class="text-small">{{ $experience->name }}</span><span
+                                                            class="checkmark"></span>
+                                                    </label><span
+                                                        class="number-item">{{ $experience->candidates_count }}</span>
+                                                </li>
+                                            @endforeach
+
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="filter-block mb-30">
-                                    <h5 class="medium-heading mb-10">Position</h5>
+                                    <h5 class="medium-heading mb-20">Trình độ học vấn</h5>
                                     <div class="form-group">
                                         <ul class="list-checkbox">
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Senior</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">12</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox" checked="checked"><span
-                                                        class="text-small">Junior</span><span class="checkmark"></span>
-                                                </label><span class="number-item">35</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Fresher</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">56</span>
-                                            </li>
+                                            {{-- <li>
+                                            <label class="cb-container d-flex align-items-center">
+                                                <input class="filter-checkbox" type="checkbox" value="all"
+                                                    checked="checked" name="academic_level" style="margin-top: 10px">
+                                                <span class="text-small">Tất cả</span>
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="number-item">{{ count($jobs) }}</span>
+                                        </li> --}}
+
+                                            @foreach ($academicLevels as $academicLevel)
+                                                <li>
+                                                    <label class="cb-container">
+                                                        <input class="filter-checkbox" type="checkbox"
+                                                            value="{{ $academicLevel->id }}" name="academic_level"><span
+                                                            class="text-small">{{ $academicLevel->name }}</span><span
+                                                            class="checkmark"></span>
+                                                    </label><span
+                                                        class="number-item">{{ $academicLevel->candidates_count }}</span>
+                                                </li>
+                                            @endforeach
+
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="filter-block mb-30">
-                                    <h5 class="medium-heading mb-10">Experience Level</h5>
-                                    <div class="form-group">
-                                        <ul class="list-checkbox">
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Internship</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">56</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Entry
-                                                        Level</span><span class="checkmark"></span>
-                                                </label><span class="number-item">87</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox" checked="checked"><span
-                                                        class="text-small">Associate</span><span class="checkmark"></span>
-                                                </label><span class="number-item">24</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Mid Level</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">45</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Director</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">76</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Executive</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">89</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="filter-block mb-30">
-                                    <h5 class="medium-heading mb-10">Onsite/Remote</h5>
-                                    <div class="form-group">
-                                        <ul class="list-checkbox">
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">On-site</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">12</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox" checked="checked"><span
-                                                        class="text-small">Remote</span><span class="checkmark"></span>
-                                                </label><span class="number-item">65</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Hybrid</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">58</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="filter-block mb-30">
-                                    <h5 class="medium-heading mb-10">Job Posted</h5>
-                                    <div class="form-group">
-                                        <ul class="list-checkbox">
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox" checked="checked"><span
-                                                        class="text-small">All</span><span class="checkmark"></span>
-                                                </label><span class="number-item">78</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">1 day</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">65</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">7 days</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">24</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">30 days</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">56</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="filter-block mb-20">
-                                    <h5 class="medium-heading mb-15">Job type</h5>
-                                    <div class="form-group">
-                                        <ul class="list-checkbox">
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Full Time</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">25</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox" checked="checked"><span
-                                                        class="text-small">Part Time</span><span class="checkmark"></span>
-                                                </label><span class="number-item">64</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Remote
-                                                        Jobs</span><span class="checkmark"></span>
-                                                </label><span class="number-item">78</span>
-                                            </li>
-                                            <li>
-                                                <label class="cb-container">
-                                                    <input type="checkbox"><span class="text-small">Freelancer</span><span
-                                                        class="checkmark"></span>
-                                                </label><span class="number-item">97</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-9">
-                        <div class="box-filters-job">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-5"><span class="text-small text-showing">Showing <strong>41-60
-                                        </strong>of
-                                        <strong>944 </strong>jobs</span></div>
-                                <div class="col-xl-6 col-lg-7 text-lg-end mt-sm-15">
-                                    <div class="display-flex2">
-                                        <div class="box-border mr-10"><span class="text-sortby">Show:</span>
-                                            <div class="dropdown dropdown-sort">
-                                                <button class="btn dropdown-toggle" id="dropdownSort" type="button"
-                                                    data-bs-toggle="dropdown" aria-expanded="false"
-                                                    data-bs-display="static"><span>12</span><i
-                                                        class="fi-rr-angle-small-down"></i></button>
-                                                <ul class="dropdown-menu dropdown-menu-light"
-                                                    aria-labelledby="dropdownSort">
-                                                    <li><a class="dropdown-item active" href="#">10</a></li>
-                                                    <li><a class="dropdown-item" href="#">12</a></li>
-                                                    <li><a class="dropdown-item" href="#">20</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="box-border"><span class="text-sortby">Sort by:</span>
-                                            <div class="dropdown dropdown-sort">
-                                                <button class="btn dropdown-toggle" id="dropdownSort2" type="button"
-                                                    data-bs-toggle="dropdown" aria-expanded="false"
-                                                    data-bs-display="static"><span>Newest Post</span><i
-                                                        class="fi-rr-angle-small-down"></i></button>
-                                                <ul class="dropdown-menu dropdown-menu-light"
-                                                    aria-labelledby="dropdownSort2">
-                                                    <li><a class="dropdown-item active" href="#">Newest Post</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#">Oldest Post</a></li>
-                                                    <li><a class="dropdown-item" href="#">Rating Post</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-8"></div>
+                            <div class="col-xl-4 col-lg-4 text-lg-end mt-sm-15">
+                                <div class="row mb-20" style="margin-top: -40px">
+                                    <div class="col-6">
+                                        <span class="d-flex justify-content-start mb-1 font-bold">Hiển thị</span>
+                                        <select class="form-select" name="limit" id="">
+                                            <option value="10">10 tin</option>
+                                            <option value="15">15 tin</option>
+                                            <option value="20">20 tin</option>
+                                        </select>
                                     </div>
+                                    <div class="col-6">
+                                        <span class="d-flex justify-content-start mb-1 font-bold">Sắp xếp</span>
+                                        <select class="form-select" name="sort" id="">
+                                            <option value="latest">Mới nhất</option>
+                                            <option value="oldest">Cũ nhất</option>
+                                        </select>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row display-list">
 
-                            @foreach ($candidates as $candidate)
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="card-grid-2 hover-up">
-                                        <div class="card-grid-2-image-left">
-                                            <div class="card-grid-2-image-rd"><a
-                                                    href="{{ route('candidate-info.show', $candidate->slug) }}">
-                                                    <figure><img alt="joblist" src="{{ asset($candidate->image) }}">
-                                                    </figure>
-                                                </a></div>
-                                            <div class="card-profile pt-10">
-                                                <a href="{{ route('candidate-info.show', $candidate->slug) }}">
-                                                    <h5>{{ $candidate->full_name }}</h5>
-                                                </a>
-                                                <span
-                                                    class="font-xs"><strong>{{ $candidate->profession->name }}</strong></span>
-                                                <div class="rate-reviews-small py-1">
-                                                    <span class="color-text-mutted font-xs"><strong>Giới tính:</strong>
-                                                        {{ $candidate->gender == 'male' ? 'Nam' : 'Nữ' }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-block-info">
-                                            <p class="font-xs">
-                                                <small><strong>Học vấn:</strong>
-                                                    {{ $candidate->academicLevel->name }}</small>
-                                                <br>
-                                                <small><strong>Kinh nghiệm:</strong>
-                                                    {{ $candidate->experience->name }}</small>
-                                            </p>
-                                            <div class="card-2-bottom card-2-bottom-candidate mt-30">
-                                                <div class="d-flex gap-2">
-
-                                                    @foreach (explode(',', $candidate->advanced_skills) as $skill)
-                                                        <p class="py-1 px-1 border rounded font-xs">{{ $skill }}</p>
-                                                    @endforeach
-
-                                                </div>
-                                            </div>
-                                            <div class="employers-info align-items-center justify-content-center mt-15">
-                                                <div class="row">
-                                                    <div class="col-12"><span class="d-flex align-items-center"><i
-                                                                class="fi-rr-marker mr-5 ml-0"></i><span
-                                                                class="font-xs color-text-mutted">{{ $candidate->candidateWard->name }},
-                                                                {{ $candidate->candidateDistrict->name }},
-                                                                {{ $candidate->candidateProvince->name }}</span></span>
-                                                    </div>
-                                                    <div class="col-12"><span class="d-flex align-items-center mt-2"><i
-                                                                class="fi-rr-money mr-5 ml-0"></i><span
-                                                                class="font-xs color-brand-1">{{ $candidate->desiredSalary->name }}</span></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-
-                            <div class="col-12">
-                                <div class="paginations mt-35">
-                                    <ul class="pager">
-                                        <li><a class="pager-prev" href="#"><i class="fas fa-arrow-left"></i></a>
-                                        </li>
-                                        <li><a class="pager-number" href="#">1</a></li>
-                                        <li><a class="pager-number" href="#">2</a></li>
-                                        <li><a class="pager-number active" href="#">3</a></li>
-                                        <li><a class="pager-number" href="#">4</a></li>
-                                        <li><a class="pager-next" href="#"><i class="fas fa-arrow-right"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -469,3 +194,209 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+
+            // Hàm debounce để tránh thực hiện quá nhiều yêu cầu liên tiếp
+            function debounce(func, delay) {
+                let timeout;
+                return function(...args) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), delay);
+                };
+            }
+
+            // Hàm để xây dựng URL với các tham số truy vấn
+            function buildQueryString(params) {
+                return $.param(params); // Sử dụng jQuery để xây dựng chuỗi truy vấn từ đối tượng
+            }
+
+            // Hàm xử lý khi thay đổi các điều kiện lọc
+            function handleFilterChange() {
+                var employmentLevels = [];
+                var workModes = [];
+                var experiences = [];
+                var academicLevels = [];
+                var search = $("input[name='search']").val();
+                var province = $("select[name='province']").val();
+                var category = $("select[name='category']").val();
+                var limit = $("select[name='limit']").val();
+                var sort = $("select[name='sort']").val();
+
+                $('input[name="employment_level"]:checked').each(function() {
+                    employmentLevels.push($(this).val());
+                });
+
+                $('input[name="work_mode"]:checked').each(function() {
+                    workModes.push($(this).val());
+                });
+
+                $('input[name="experience"]:checked').each(function() {
+                    experiences.push($(this).val());
+                });
+
+                $('input[name="academic_level"]:checked').each(function() {
+                    academicLevels.push($(this).val());
+                });
+
+                // Đặt page thành 1 khi thay đổi filter
+                var queryParams = {
+                    employment_levels: employmentLevels,
+                    work_modes: workModes,
+                    experiences: experiences,
+                    academic_levels: academicLevels,
+                    search: search,
+                    province: province,
+                    category: category,
+                    limit: limit,
+                    sort: sort,
+                    page: 1 // Đặt page thành 1 để quay lại trang đầu
+                };
+
+                // Tạo chuỗi truy vấn từ các tham số đã cập nhật
+                var queryString = buildQueryString(queryParams);
+
+                // Cập nhật URL trình duyệt với tham số mới
+                history.pushState(null, '', '?' + queryString);
+
+                // Thực hiện yêu cầu AJAX với các tham số đã cập nhật
+                $.ajax({
+                    url: "{{ route('candidates.index') }}",
+                    method: 'GET',
+                    data: queryParams,
+                    beforeSend: function() {
+                        showPreloader();
+                    },
+                    success: function(response) {
+                        $('.display-list').html(response);
+                        $('html, body').animate({
+                            scrollTop: 0
+                        }, 200);
+                    },
+                    error: function(xhr) {
+                        console.error("Đã xảy ra lỗi khi lọc công việc");
+                    },
+                    complete: function() {
+                        hidePreloader();
+                    }
+                });
+            }
+
+            // Tạo phiên bản debounce của handleFilterChange
+            var debounceHandleFilterChange = debounce(handleFilterChange, 200);
+
+            // Gán sự kiện cho các phần tử lọc và gọi debounceHandleFilterChange
+            $('.filter-checkbox, select[name="province"], select[name="category"], #rangeSlider, select[name="limit"], select[name="sort"]')
+                .on('change', debounceHandleFilterChange);
+
+            $('input[name="search"]')
+                .on('keyup', debounceHandleFilterChange);
+
+            // Xử lý khi tải trang với các tham số truy vấn từ URL
+            $(window).on('popstate', function() {
+                var params = new URLSearchParams(window.location.search);
+
+                var employmentLevels = params.getAll('employment_levels[]');
+                var workModes = params.getAll('work_modes[]');
+                var experiences = params.getAll('experiences[]');
+                var academicLevels = params.getAll('academic_levels[]');
+                var search = params.get('search') || '';
+                var province = params.get('province') || '00';
+                var category = params.get('category') || 'all';
+
+                $('input[name="search"]').val(search);
+                $('select[name="province"]').val(province);
+                $('select[name="category"]').val(category);
+
+                // Đánh dấu các checkbox đã chọn
+                $('input[name="employment_level"]').each(function() {
+                    $(this).prop('checked', employmentLevels.includes($(this).val()));
+                });
+
+                $('input[name="work_mode"]').each(function() {
+                    $(this).prop('checked', workModes.includes($(this).val()));
+                });
+
+                $('input[name="experience"]').each(function() {
+                    $(this).prop('checked', experiences.includes($(this).val()));
+                });
+
+                $('input[name="academic_level"]').each(function() {
+                    $(this).prop('checked', academicLevels.includes($(this).val()));
+                });
+
+                // Gọi API với các tham số truy vấn từ URL
+                handleFilterChange();
+            });
+
+            // Xử lý khi tải trang lần đầu tiên
+            if (window.location.search) {
+                $(window).trigger('popstate');
+            } else {
+                $.ajax({
+                    url: "{{ route('candidates.index') }}", // URL API của bạn
+                    method: 'GET',
+                    data: {},
+                    beforeSend: function() {
+                        showPreloader();
+                    },
+                    success: function(response) {
+                        $('.display-list').html(response);
+                    },
+                    error: function(xhr) {
+                        console.error("Đã xảy ra lỗi khi tải công việc");
+                    },
+                    complete: function() {
+                        hidePreloader();
+                    }
+                });
+            }
+        });
+    </script>
+
+
+    <script>
+        $(document).on('click', '.pagination a', function(event) {
+            event.preventDefault();
+
+            // Lấy số trang từ liên kết được nhấn
+            var page = $(this).attr('href').split('page=')[1];
+
+            // Lấy các tham số lọc hiện tại từ URL
+            var queryParams = new URLSearchParams(window.location.search);
+
+            // Cập nhật tham số trang
+            queryParams.set('page', page);
+
+            // Xây dựng chuỗi truy vấn từ các tham số đã cập nhật
+            var queryString = queryParams.toString();
+
+            // Cập nhật URL trình duyệt với tham số trang mới
+            history.pushState(null, '', '?' + queryString);
+
+            // Thực hiện yêu cầu AJAX với trang được cập nhật và các bộ lọc hiện tại
+            $.ajax({
+                url: "{{ route('candidates.index') }}",
+                method: 'GET',
+                data: queryString,
+                beforeSend: function() {
+                    showPreloader(); // Hiển thị preloader trong khi chờ phản hồi
+                },
+                success: function(response) {
+                    $('.display-list').html(response); // Thay thế nội dung của danh sách công việc
+                    $('html, body').animate({
+                        scrollTop: 0 // Cuộn lên đầu trang
+                    }, 200);
+                },
+                error: function(xhr) {
+                    console.error("Đã xảy ra lỗi khi tải công việc trang mới."); // Xử lý lỗi nếu có
+                },
+                complete: function() {
+                    hidePreloader(); // Ẩn preloader sau khi hoàn tất yêu cầu
+                }
+            });
+        });
+    </script>
+@endpush

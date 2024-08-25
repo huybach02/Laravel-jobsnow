@@ -107,3 +107,12 @@ function formatMoney($number)
 {
   return number_format($number, 0, ',', '.') . ' ₫';
 }
+
+function limitText($text, $limit = 100, $end = '...')
+{
+  if (strlen($text) <= $limit) {
+    return $text;
+  }
+
+  return substr($text, 0, $limit) . $end;
+}
