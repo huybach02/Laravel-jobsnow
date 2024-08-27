@@ -143,9 +143,13 @@
 
                     xhr.send(formData);
                 });
-            }
+            },
+            // Add these options to prevent URL rewriting
+            remove_script_host: false,
+            convert_urls: false
         });
     </script>
+
 
     <script>
         $("body").on("click", ".delete-btn", function(e) {

@@ -8,7 +8,8 @@
             <div class="header-nav">
                 <nav class="nav-main-menu">
                     <ul class="main-menu">
-                        <li class="has-children"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="has-children"><a class="{{ setSubActive(['home']) }}"
+                                href="{{ route('home') }}">Trang chủ</a></li>
                         <li class="has-children"><a class="{{ setSubActive(['jobs.*']) }}"
                                 href="{{ route('jobs.index') }}">Tìm việc</a></li>
                         <li class="has-children"><a class="{{ setSubActive(['companies.*']) }}"
@@ -26,7 +27,8 @@
                                 <li><a href="blog-details.html">Blog Single</a></li>
                             </ul>
                         </li> --}}
-                        <li class="has-children"><a href="blog-grid.html">Tin tức</a></li>
+                        <li class="has-children"><a class="{{ setSubActive(['blogs.*']) }}"
+                                href="{{ route('blogs.index') }}">Tin tức</a></li>
                     </ul>
                 </nav>
                 <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span

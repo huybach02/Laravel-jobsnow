@@ -107,6 +107,10 @@
                             href="{{ route('admin.work-modes.index') }}">Hình thức làm việc</a></li>
                 </ul>
             </li>
+            <li class="{{ setActive(['admin.blogs.*']) }}"> <a href="{{ route('admin.blogs.index') }}"
+                    class="d-flex align-items-center"><i class="zmdi zmdi-collection-plus"></i><span
+                        class="font-bold">QL
+                        Tin Tức</span> </a>
         </ul>
     </div>
     <!-- #Menu -->

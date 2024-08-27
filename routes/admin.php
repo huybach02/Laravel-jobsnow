@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CommuneWardController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DesiredSalaryController;
@@ -146,5 +147,9 @@ Route::prefix('admin')->as('admin.')->group(function () {
     // Work Mode
     Route::put("work-modes/change-status", [WorkModeController::class, "changeStatus"])->name("work-modes.change-status");
     Route::resource("work-modes", WorkModeController::class);
+
+    // Blog
+    Route::put("blogs/change-status", [BlogController::class, "changeStatus"])->name("blogs.change-status");
+    Route::resource("blogs", BlogController::class);
   });
 });

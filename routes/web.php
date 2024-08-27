@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateJobBookmarkController;
 use App\Http\Controllers\Frontend\CandidateMyJobAppliedController;
@@ -42,6 +43,10 @@ Route::get("candidate-info/{slug}", [FrontendCandidateController::class, "show"]
 // Jobs
 Route::get("jobs", [FrontendJobController::class, "index"])->name("jobs.index");
 Route::get("jobs/{slug}", [FrontendJobController::class, "show"])->name("jobs.show");
+
+// Blogs
+Route::get("blogs", [BlogController::class, "index"])->name("blogs.index");
+Route::get("blogs/{slug}", [BlogController::class, "show"])->name("blogs.show");
 
 // Candidate
 Route::prefix("candidate")->as("candidate.")->middleware(["auth", "verified", "role:candidate"])->group(function () {
@@ -107,7 +112,9 @@ Route::post('/upload', function (Request $request) {
     $imageName = "image_" . uniqid() . "." . $ext;
     $image->move(public_path("uploads/tinymce_images"), $imageName);
 
-    return response()->json(['location' =>  asset("uploads/tinymce_images" . "/" . $imageName)]);
+    $imageUrl = url("uploads/tinymce_images/" . $imageName);
+
+    return response()->json(['location' => $imageUrl]);
   }
 })->name("upload");
 
