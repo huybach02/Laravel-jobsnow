@@ -29,6 +29,9 @@
                         <h5 class="f-18">{{ $company->name }} <span
                                 class="card-location font-regular ml-20">{{ $company->companyProvince->name }}</span></h5>
                         <p class="mt-5 font-md color-text-paragraph-2 mb-15">{{ $company->industry->name }}</p>
+                        @if ($company->is_profile_verified == 1)
+                            <img src="{{ asset('frontend/assets/daxacthuc.png') }}" alt="" width="100px">
+                        @endif
                     </div>
                     <div class="col-lg-4 col-md-12 text-lg-end"><a class="btn btn-call-icon btn-apply btn-apply-big"
                             href="mailto:{{ $company->email }}">Liên hệ ngay</a></div>

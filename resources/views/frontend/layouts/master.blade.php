@@ -375,6 +375,30 @@
             from: 550,
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            $("body").on('click', '.job-bookmark', function(event) {
+                let id = $(this).data('id')
+
+                $.ajax({
+                    url: "{{ route('candidate.my-bookmarks.store', ':id') }}".replace(':id', id),
+                    method: "GET",
+                    success: function(data) {
+                        if (data.success) {
+                            flasher.success(data.message, "Thành công")
+                        } else {
+                            flasher.error(data.message, "Thất bại")
+                        }
+                    },
+
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                })
+            })
+        })
+    </script>
 </body>
 
 </html>

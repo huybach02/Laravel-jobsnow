@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\JobRequest;
 use App\Models\AcademicLevel;
+use App\Models\AppliedJob;
+use App\Models\Candidate;
 use App\Models\CommuneWard;
 use App\Models\Company;
 use App\Models\District;
@@ -28,7 +30,8 @@ class JobController extends Controller
    */
   public function index()
   {
-    $jobs = Job::orderBy("id", "desc")->get();
+    $jobs = Job::withCount("applications")->orderBy("id", "desc")->get();
+
     return view('frontend.company-dashboard.job.index', compact('jobs'));
   }
 
@@ -268,6 +271,39 @@ class JobController extends Controller
     return response([
       "success" => true,
       "message" => "Cập nhật trạng thái thành công!",
+    ]);
+  }
+
+  public function applications(Request $request, $id)
+  {
+    $job = Job::findOrFail($id);
+    $applications = AppliedJob::with("candidate", "job")->where("job_id", $id)->get();
+
+    return view("frontend.company-dashboard.job.application", compact("job", "applications"));
+  }
+
+  public function applicationShow(Request $request, $id, $candidate_id)
+  {
+    $myJob = AppliedJob::with("job", "candidate")->where("id", $id)->where("candidate_id", $candidate_id)->first();
+    $candidate = Candidate::find($candidate_id);
+
+    if ($request->ajax()) {
+      $html = view('frontend.candidate-dashboard.my-jobs-applied.my-jobs-modal', compact('myJob', 'candidate'))->render();
+
+      return response()->json($html);
+    }
+  }
+
+  public function changeStatusApplication(Request $request)
+  {
+    $application = AppliedJob::where(["id" => $request->id, "candidate_id" => $request->candidate_id])->first();
+
+    $application->status = $request->status;
+    $application->save();
+
+    return response([
+      "success" => true,
+      "message" => "Cập nhật trạng thái ứng tuyển thành công!",
     ]);
   }
 }

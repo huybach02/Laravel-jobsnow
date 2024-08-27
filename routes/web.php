@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Frontend\CandidateDashboardController;
+use App\Http\Controllers\Frontend\CandidateJobBookmarkController;
+use App\Http\Controllers\Frontend\CandidateMyJobAppliedController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
@@ -64,6 +66,13 @@ Route::prefix("candidate")->as("candidate.")->middleware(["auth", "verified", "r
   Route::post("profile/change-email", [CandidateProfileController::class, "updateEmail"])->name("profile.update-email");
   Route::post("profile/change-password", [CandidateProfileController::class, "updatePassword"])->name("profile.update-password");
 
+  Route::post("apply-job/{id}", [FrontendJobController::class, "applyJob"])->name("apply-job");
+  Route::get("my-jobs", [CandidateMyJobAppliedController::class, "index"])->name("my-jobs.index");
+  Route::get("my-jobs/{id}", [CandidateMyJobAppliedController::class, "show"])->name("my-jobs.show");
+
+  Route::get("my-bookmarks", [CandidateJobBookmarkController::class, "index"])->name("my-bookmarks.index");
+  Route::get("my-bookmarks/{id}", [CandidateJobBookmarkController::class, "store"])->name("my-bookmarks.store");
+
   Route::get("change-type-tab", [CandidateProfileController::class, "changeTypeTab"])->name("change-type-tab");
 });
 
@@ -84,6 +93,9 @@ Route::prefix("company")->as("company.")->middleware(["auth", "verified", "role:
 
   Route::put("jobs/change-status", [JobController::class, "changeStatus"])->name("jobs.change-status");
   Route::put("jobs/change-featured", [JobController::class, "changeFeatured"])->name("jobs.change-featured");
+  Route::get("jobs/applications/{id}", [JobController::class, "applications"])->name("jobs.applications");
+  Route::get("jobs/applications/{id}/show/{candidate_id}", [JobController::class, "applicationShow"])->name("jobs.applications.show");
+  Route::put("jobs/applications/change-status", [JobController::class, "changeStatusApplication"])->name("jobs.applications.change-status");
   Route::resource('jobs', JobController::class);
 });
 

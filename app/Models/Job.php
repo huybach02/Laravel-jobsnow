@@ -14,6 +14,11 @@ class Job extends Model
     return $this->belongsTo(Company::class);
   }
 
+  public function applications()
+  {
+    return $this->hasMany(AppliedJob::class, "job_id", "id");
+  }
+
   public function jobProvince()
   {
     return $this->belongsTo(ProvinceCity::class, "province", "code");

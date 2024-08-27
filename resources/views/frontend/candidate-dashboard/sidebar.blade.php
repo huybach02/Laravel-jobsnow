@@ -8,12 +8,14 @@
             <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2 {{ setSubActive(['candidate.profile.*']) }}"
                     href="{{ route('candidate.profile.index') }}"><i class="fas fa-address-card"
                         style="font-size: 16px"></i> Thông Tin Tài Khoản</a></li>
-            <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2 {{ setSubActive(['candidate.job-applied']) }}"
-                    href="candidate-profile-jobs.html"><i class="fas fa-check-square" style="font-size: 16px"></i> Công
+            <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2 {{ setSubActive(['candidate.my-jobs.*']) }}"
+                    href="{{ route('candidate.my-jobs.index') }}"><i class="fas fa-check-square"
+                        style="font-size: 16px"></i> Công
                     việc đã ứng
                     tuyển</a></li>
-            <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2 {{ setSubActive(['candidate.job-saved']) }}"
-                    href="candidate-profile-save-jobs.html"><i class="fas fa-bookmark" style="font-size: 16px"></i> Công
+            <li><a class="btn btn-border mb-20 d-flex align-items-center gap-2 {{ setSubActive(['candidate.my-bookmarks.*']) }}"
+                    href="{{ route('candidate.my-bookmarks.index') }}"><i class="fas fa-bookmark"
+                        style="font-size: 16px"></i> Công
                     việc đã lưu</a>
             </li>
             </li>

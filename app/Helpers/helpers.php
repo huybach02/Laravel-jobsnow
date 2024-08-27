@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AppliedJob;
 use App\Models\Candidate;
 use App\Models\Company;
 
@@ -89,15 +90,17 @@ function isCandidateProfileCompleted()
     "allow_show"
   ];
 
-  $candidateProfile = Candidate::where("user_id", auth()->user()->id)->first();
+  if (auth()->check()) {
+    $candidateProfile = Candidate::where("user_id", auth()->user()->id)->first();
 
-  if ($candidateProfile) {
-    foreach ($requiredFields as $field) {
-      if (empty($candidateProfile->{$field})) {
-        return false;
+    if ($candidateProfile) {
+      foreach ($requiredFields as $field) {
+        if (empty($candidateProfile->{$field})) {
+          return false;
+        }
       }
+      return true;
     }
-    return true;
   }
 
   return false;
@@ -115,4 +118,16 @@ function limitText($text, $limit = 100, $end = '...')
   }
 
   return substr($text, 0, $limit) . $end;
+}
+
+function isApplied($jobId)
+{
+  if (auth()->check() && auth()->user()->role == 'candidate') {
+    $applied = AppliedJob::where('job_id', $jobId)->where('candidate_id', auth()->user()->candidate->id)->first();
+    if ($applied) {
+      return true;
+    }
+    return false;
+  }
+  return false;
 }

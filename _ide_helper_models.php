@@ -76,6 +76,33 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $job_id
+ * @property int $candidate_id
+ * @property string|null $message
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Candidate|null $candidate
+ * @property-read \App\Models\Job|null $job
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob query()
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob whereCandidateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob whereJobId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AppliedJob whereUpdatedAt($value)
+ */
+	class AppliedJob extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property int $user_id
  * @property string|null $image
  * @property string|null $full_name
@@ -584,6 +611,8 @@ namespace App\Models{
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\AppliedJob> $applications
+ * @property-read int|null $applications_count
  * @property-read \App\Models\Company $company
  * @property-read \App\Models\District|null $jobDistrict
  * @property-read \App\Models\ProvinceCity|null $jobProvince
@@ -627,6 +656,29 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Job whereWorkMode($value)
  */
 	class Job extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $job_id
+ * @property int $candidate_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Candidate|null $candidate
+ * @property-read \App\Models\Job|null $job
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark query()
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereCandidateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereJobId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobBookmark whereUpdatedAt($value)
+ */
+	class JobBookmark extends \Eloquent {}
 }
 
 namespace App\Models{

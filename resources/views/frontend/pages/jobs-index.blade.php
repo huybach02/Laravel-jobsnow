@@ -290,7 +290,6 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-
             // Hàm debounce để tránh thực hiện quá nhiều yêu cầu liên tiếp
             function debounce(func, delay) {
                 let timeout;
@@ -302,7 +301,7 @@
 
             // Hàm để xây dựng URL với các tham số truy vấn
             function buildQueryString(params) {
-                return $.param(params); // Sử dụng jQuery để xây dựng chuỗi truy vấn từ đối tượng
+                return $.param(params);
             }
 
             // Hàm xử lý khi thay đổi các điều kiện lọc
@@ -334,7 +333,6 @@
                     academicLevels.push($(this).val());
                 });
 
-                // Đặt page thành 1 khi thay đổi filter
                 var queryParams = {
                     employment_levels: employmentLevels,
                     work_modes: workModes,
@@ -346,20 +344,20 @@
                     min_value: minValue,
                     limit: limit,
                     sort: sort,
-                    page: 1 // Đặt page thành 1 để quay lại trang đầu
+                    page: 1
                 };
 
-                // Tạo chuỗi truy vấn từ các tham số đã cập nhật
                 var queryString = buildQueryString(queryParams);
 
-                // Cập nhật URL trình duyệt với tham số mới
-                history.pushState(null, '', '?' + queryString);
+                // Cập nhật URL mà không thêm lịch sử mới
+                history.replaceState(null, '', '?' + queryString);
 
-                // Thực hiện yêu cầu AJAX với các tham số đã cập nhật
+                // Thực hiện yêu cầu AJAX
                 $.ajax({
                     url: "{{ route('jobs.index') }}",
                     method: 'GET',
                     data: queryParams,
+                    cache: false, // Tắt cache
                     beforeSend: function() {
                         showPreloader();
                     },
@@ -378,61 +376,32 @@
                 });
             }
 
-            // Tạo phiên bản debounce của handleFilterChange
             var debounceHandleFilterChange = debounce(handleFilterChange, 200);
 
             // Gán sự kiện cho các phần tử lọc và gọi debounceHandleFilterChange
             $('.filter-checkbox, select[name="province"], select[name="category"], #rangeSlider, select[name="limit"], select[name="sort"]')
                 .on('change', debounceHandleFilterChange);
 
-            $('input[name="search"]')
-                .on('keyup', debounceHandleFilterChange);
+            $('input[name="search"]').on('keyup', debounceHandleFilterChange);
 
-            // Xử lý khi tải trang với các tham số truy vấn từ URL
-            $(window).on('popstate', function() {
-                var params = new URLSearchParams(window.location.search);
-
-                var employmentLevels = params.getAll('employment_levels[]');
-                var workModes = params.getAll('work_modes[]');
-                var experiences = params.getAll('experiences[]');
-                var academicLevels = params.getAll('academic_levels[]');
-                var search = params.get('search') || '';
-                var province = params.get('province') || '00';
-                var category = params.get('category') || 'all';
-
-                $('input[name="search"]').val(search);
-                $('select[name="province"]').val(province);
-                $('select[name="category"]').val(category);
-
-                // Đánh dấu các checkbox đã chọn
-                $('input[name="employment_level"]').each(function() {
-                    $(this).prop('checked', employmentLevels.includes($(this).val()));
-                });
-
-                $('input[name="work_mode"]').each(function() {
-                    $(this).prop('checked', workModes.includes($(this).val()));
-                });
-
-                $('input[name="experience"]').each(function() {
-                    $(this).prop('checked', experiences.includes($(this).val()));
-                });
-
-                $('input[name="academic_level"]').each(function() {
-                    $(this).prop('checked', academicLevels.includes($(this).val()));
-                });
-
-                // Gọi API với các tham số truy vấn từ URL
+            // Xử lý sự kiện popstate khi quay lại trang
+            window.addEventListener('popstate', function(event) {
+                // Lấy các tham số từ URL và cập nhật trang
                 handleFilterChange();
             });
+            window.onpopstate = function(event) {
+                // Gửi lại AJAX request để tải dữ liệu mới với các điều kiện filter đã lưu
+                handleFilterChange();
+            };
 
-            // Xử lý khi tải trang lần đầu tiên
+            // Kiểm tra nếu URL có tham số, gọi lại API để nạp dữ liệu ban đầu
             if (window.location.search) {
-                $(window).trigger('popstate');
+                handleFilterChange();
             } else {
                 $.ajax({
-                    url: "{{ route('jobs.index') }}", // URL API của bạn
+                    url: "{{ route('jobs.index') }}",
                     method: 'GET',
-                    data: {},
+                    cache: false,
                     beforeSend: function() {
                         showPreloader();
                     },

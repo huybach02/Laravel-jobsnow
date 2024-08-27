@@ -45,10 +45,12 @@
                             </span>
                         </div>
                         <div class="col-lg-5 col-5 text-end">
-                            <div class="btn btn-apply-now" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm"
-                                style="background-color: transparent; border: 1px solid #15a0df;padding: 8px 0">
-                                <i class="far fa-bookmark" style="font-size: 20px;color: #15a0df"></i>
-                            </div>
+                            @auth
+                                <div class="btn btn-apply-now job-bookmark" data-id="{{ $job->id }}"
+                                    style="background-color: transparent; border: 1px solid #15a0df;padding: 8px 0">
+                                    <i class="far fa-bookmark" style="font-size: 20px;color: #15a0df"></i>
+                                </div>
+                            @endauth
                         </div>
                     </div>
                 </div>

@@ -27,26 +27,40 @@
                     <div class="mt-0 mb-15"><span class="card-briefcase">{{ $job->getWorkMode()->name }}</span><span
                             class="card-time">{{ $job->created_at->diffForHumans() }}</span></div>
 
-                    @if ($job->deadline >= date('Y-m-d'))
-                        <h6 class="w-50 py-2 px-4 text-white" style="background-color: #ff5a5f">Thời hạn ứng tuyển:
-                            {{ date('d-m-Y', strtotime($job->deadline)) }}
-                        </h6>
-                    @else
-                        <h6 class="w-50 py-2 px-4 text-white" style="background-color: #ff5a5f">
-                            Đã hết thời gian ứng tuyển
-                        </h6>
-                    @endif
+                    <div class="col-12">
+                        @if ($job->deadline >= date('Y-m-d'))
+                            <h6 class="col-md-6 py-2 px-4 text-white" style="background-color: #ff5a5f">Thời hạn ứng
+                                tuyển:
+                                {{ date('d-m-Y', strtotime($job->deadline)) }}
+                            </h6>
+                        @else
+                            <h6 class="col-md-6 py-2 px-4 text-white" style="background-color: #ff5a5f">
+                                Đã hết thời gian ứng tuyển
+                            </h6>
+                        @endif
+                    </div>
 
                 </div>
 
                 @if ($job->deadline >= date('Y-m-d'))
-                    <div class="col-lg-4 col-md-12 text-lg-end">
+                    <div class="col-lg-4 col-md-12 text-lg-end mt-10">
                         <div class="btn btn-apply-now hover-up" data-bs-toggle="modal" data-bs-target="#ModalApplyJobForm"
                             style="background-color: transparent; border: 1px solid #15a0df;padding: 15px 0">
                             <i class="far fa-bookmark" style="font-size: 20px;color: #15a0df"></i>
                         </div>
-                        <div class="btn btn-apply-icon btn-apply btn-apply-big hover-up" data-bs-toggle="modal"
-                            data-bs-target="#ModalApplyJobForm">Ứng tuyển ngay</div>
+                        @if (isApplied($job->id))
+                            <div class="btn btn-success font-bold" style="padding: 18px 30px"><i
+                                    class="fas fa-check-circle mr-5"></i>
+                                Đã
+                                ứng tuyển</div>
+                        @else
+                            @if (auth()->check() && auth()->user()->role == 'company')
+                            @else
+                                <div class="btn btn-apply-icon btn-apply btn-apply-big hover-up" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">Ứng tuyển ngay</div>
+                            @endif
+                        @endif
+
                     </div>
                 @endif
 
@@ -299,5 +313,134 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                            @if (auth()->check() && isCandidateProfileCompleted())
+                                Thông tin ứng tuyển
+                            @endif
+                            @if (!auth()->check())
+                                Đăng nhập để ứng tuyển
+                            @endif
+                            @if (!isCandidateProfileCompleted())
+                                Vui lòng cập nhật hồ sơ của bạn
+                            @endif
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        @if (!auth()->check())
+                            <p>Bạn vui lòng <strong>Đăng nhập</strong> hoặc <strong>Đăng ký</strong> nếu chưa có tài khoản
+                                để có thể ứng tuyển vào công việc
+                                này</p>
+                        @endif
+                        @if (auth()->check() && isCandidateProfileCompleted())
+                            <div>
+                                <h6>Ảnh đại diện của bạn</h6>
+                                <div class="image-profile mb-20"><img
+                                        src="{{ @$candidate ? asset($candidate?->image) : 'https://cdn.viettablet.com/images/news/30/image-1536378713-nokia-9-penta-lens-render-by-benjamin-geskin_1200x800-800-resize.jpg' }}"
+                                        alt="joblist">
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2 align-items-end mb-5">
+                                <h6 for="" class="font-bold">Họ và tên:</h6>
+                                <p style="font-size: 15px">{{ $candidate?->full_name }}</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex gap-2 align-items-end mb-5">
+                                        <h6 for="" class="font-bold">Ngày sinh:</h6>
+                                        <p style="font-size: 15px">
+                                            {{ date('d-m-Y', strtotime($candidate?->birthday)) }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex gap-2 align-items-end mb-5">
+                                        <h6 for="" class="font-bold">Giới tính:</h6>
+                                        <p style="font-size: 15px">{{ $candidate?->gender == 'male' ? 'Nam' : 'Nữ' }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="d-flex gap-2 align-items-end mb-5">
+                                        <h6 for="" class="font-bold">Lĩnh vực nghề ngiệp:</h6>
+                                        <p style="font-size: 15px">{{ $candidate?->profession->name }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="d-flex gap-2 align-items-end mb-5">
+                                        <h6 for="" class="font-bold">Kinh nghiệm làm việc:</h6>
+                                        <p style="font-size: 15px">{{ $candidate?->experience->name }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="d-flex gap-2 align-items-end mb-5">
+                                        <h6 for="" class="font-bold">CV của bạn:</h6>
+                                        <a href="{{ asset($candidate?->cv_link) }}" target="_blank" class="text-primary"
+                                            style="font-size: 15px">Nhấn vào đây để xem CV</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="d-flex gap-2 align-items-end mb-5">
+                                        <h6 for="" class="font-bold">Email liên hệ:</h6>
+                                        <p style="font-size: 15px">{{ $candidate?->email }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="d-flex gap-2 align-items-end mb-5">
+                                        <h6 for="" class="font-bold">Số điện thoại liên hệ:</h6>
+                                        <p style="font-size: 15px">{{ $candidate?->phone }}</p>
+                                    </div>
+                                </div>
+                                <form id="applyForm" action="{{ route('candidate.apply-job', $job->id) }}"
+                                    method="POST">
+                                    @csrf
+
+                                    <div class="form-group select-style">
+                                        <h6 for="" class="font-bold mb-10">Nội dung tự giới thiệu bản thân với nhà
+                                            tuyển
+                                            dụng (Tuỳ chọn):</h6>
+                                        <textarea name="message" id="" cols="30" rows="5">{{ old('message') }}</textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        @endif
+                        @if (auth()->check() && !isCandidateProfileCompleted())
+                            <p>Bạn vui lòng hoàn thành đầy đủ 2 mục <strong>"Thông tin chung"</strong> và <strong>"Thông tin
+                                    liên hệ"</strong> trong phần
+                                <strong>"Thông tin tài khoản"</strong> để có thể ứng tuyển vào công việc này cũng như các
+                                công việc khác.
+                            </p>
+                        @endif
+                    </div>
+                    <div class="modal-footer">
+                        @if (!auth()->check())
+                            <a href="{{ route('register') }}" class="btn btn-secondary">Đăng ký</a>
+                            <a href="{{ route('login') }}" class="btn btn-primary">Đăng nhập</a>
+                        @endif
+                        @if (auth()->check() && isCandidateProfileCompleted())
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            <button type="button" class="btn btn-primary btn-submit">Xác nhận</button>
+                        @endif
+                        @if (auth()->check() && !isCandidateProfileCompleted())
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                            <a href="{{ route('candidate.profile.index') }}" class="btn btn-primary">Cập nhật ngay</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.btn-submit').on('click', function() {
+            $('#applyForm').submit();
+        })
+    </script>
+@endpush

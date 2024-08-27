@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicLevel;
+use App\Models\AppliedJob;
+use App\Models\Candidate;
 use App\Models\DesiredSalary;
 use App\Models\EmploymentLevel;
 use App\Models\Experience;
@@ -95,11 +97,25 @@ class FrontendJobController extends Controller
     $job = Job::where(["status" => 1])->where("slug", $slug)->first();
     $similarJobs = Job::where(["status" => 1])->where("slug", "!=", $slug)->where("deadline", ">=", date("Y-m-d"))->where("company_id", $job->company_id)->get();
     $countJobByCompany = Job::where(["status" => 1])->where("deadline", ">=", date("Y-m-d"))->where("company_id", $job->company_id)->count();
+    $candidate = auth()->check() ? Candidate::where('user_id', auth()->user()->id)->first() : null;
 
     if (!$job) {
       abort(404);
     }
 
-    return view('frontend.pages.jobs-show', compact('job', 'similarJobs', 'countJobByCompany'));
+    return view('frontend.pages.jobs-show', compact('job', 'similarJobs', 'countJobByCompany', 'candidate'));
+  }
+
+  public function applyJob(Request $request, $id)
+  {
+    $appliedJob = new AppliedJob();
+    $appliedJob->job_id = $id;
+    $appliedJob->candidate_id = auth()->user()->candidate->id;
+    $appliedJob->message = $request->message;
+    $appliedJob->save();
+
+    flash()->addSuccess('Đã ứng tuyển thành công!', "Thành công");
+
+    return redirect()->back();
   }
 }

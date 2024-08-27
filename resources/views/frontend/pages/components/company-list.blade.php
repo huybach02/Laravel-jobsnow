@@ -19,7 +19,7 @@
 @endforeach
 
 <div class="d-flex justify-content-center mt-40">
-    @if ($jobs->hasPages())
-        {{ $jobs->appends(request()->except('page'))->links() }}
+    @if ($companies->hasPages())
+        {{ $companies->appends(request()->except('page'))->links() }}
     @endif
 </div>

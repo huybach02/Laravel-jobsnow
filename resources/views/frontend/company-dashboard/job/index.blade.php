@@ -41,9 +41,10 @@
                                         <th>Tiêu đề</th>
                                         <th>Danh mục tuyển dụng</th>
                                         <th style="text-align: start">Thời gian hết hạn</th>
-                                        <th style="text-align: start">Số lượt xem</th>
-                                        <th>Tin nổi bật</th>
+                                        <th style="text-align: start">Lượt xem</th>
+                                        <th>Nổi bật</th>
                                         <th style="text-align: start">Trạng thái</th>
+                                        <th style="text-align: start">Ứng viên</th>
                                         <th style="text-align: start">Hành động</th>
                                     </tr>
                                 </thead>
@@ -52,7 +53,9 @@
                                         <tr>
                                             <td class="text-center">{{ $key + 1 }}</td>
                                             <td>{{ $job->id }}</td>
-                                            <td>{{ strlen($job->title) > 150 ? substr($job->title, 0, 150) . '...' : $job->title }}
+                                            <td>
+                                                <a
+                                                    href="{{ route('jobs.show', $job->slug) }}">{{ strlen($job->title) > 150 ? substr($job->title, 0, 150) . '...' : $job->title }}</a>
                                             </td>
                                             <td>{{ implode(', ', $job->getJobCategoryNames()) }}</td>
                                             <td style="text-align: start">
@@ -77,14 +80,22 @@
                                                     <span class="slider round"></span>
                                                 </label>
                                             </td>
+                                            <td style="text-align: center">
+                                                <div>
+                                                    <i class="fas fa-users" style="font-size: 13px"></i>
+                                                    {{ $job->applications_count }}
+                                                </div>
+                                                <a href="{{ route('company.jobs.applications', $job->id) }}"
+                                                    style="color: #15a0df;font-weight: 600; margin-top: 8px">Xem</a>
+                                            </td>
                                             <td style="text-align: start">
                                                 <a href="{{ route('company.jobs.edit', $job->id) }}"><button type="button"
-                                                        class="btn btn-primary btn-sm mb-2"><i
-                                                            class="fas fa-eye"></i></button></a>
+                                                        class="btn btn-primary btn-sm" style="padding: 6px 8px"><i
+                                                            class="fas fa-eye" style="font-size: 12px"></i></button></a>
                                                 <a href="{{ route('company.jobs.destroy', $job->id) }}"
-                                                    class="delete-btn"><button type="button"
-                                                        class="btn btn-danger btn-sm"><i
-                                                            class="fas fa-trash"></i></button></a>
+                                                    class="delete-btn"><button type="button" class="btn btn-danger btn-sm"
+                                                        style="padding: 6px 8px"><i class="fas fa-trash"
+                                                            style="font-size: 12px"></i></button></a>
                                             </td>
                                         </tr>
                                     @endforeach
