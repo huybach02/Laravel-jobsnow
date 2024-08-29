@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\DesiredSalaryController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\EmploymentLevelController;
 use App\Http\Controllers\Admin\ExperienceController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\JobCategoryController;
 use App\Http\Controllers\Admin\LanguageController;
@@ -151,5 +152,12 @@ Route::prefix('admin')->as('admin.')->group(function () {
     // Blog
     Route::put("blogs/change-status", [BlogController::class, "changeStatus"])->name("blogs.change-status");
     Route::resource("blogs", BlogController::class);
+
+    // Home Manage
+    Route::get("hero-section", [HomeController::class, "heroIndex"])->name("home-section.index");
+    Route::post("hero-section", [HomeController::class, "heroUpdate"])->name("home-section.update");
+    Route::get("featured-categories-section", [HomeController::class, "featuredCategories"])->name("featured-categories-section.index");
+    Route::put("featured-categories-section/change-status", [HomeController::class, "featuredCategoriesChangeStatus"])->name("featured-categories-section.change-status");
+    Route::put("featured-categories-section/change-status-job-featured", [HomeController::class, "featuredCategoriesChangeStatusJobFeatured"])->name("featured-categories-section.change-status-job-featured");
   });
 });

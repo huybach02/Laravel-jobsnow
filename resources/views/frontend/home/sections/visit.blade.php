@@ -2,20 +2,19 @@
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-6 col-sm-12">
-                <div class="content-job-inner"><span class="color-text-mutted text-32">Millions Of Jobs.
+                <div class="content-job-inner"><span class="color-text-mutted text-32">Rất nhiều việc làm hấp dẫn đang đợi
+                        bạn.
                     </span>
-                    <h2 class="text-52 wow animate__animated animate__fadeInUp">Find The One That&rsquo;s
-                        <span class="color-brand-2">Right</span> For You
+                    <h2 class="text-52 wow animate__animated animate__fadeInUp">
+                        Tìm Công Việc Phù Hợp Với Bạn Ngay Hôm Nay!
                     </h2>
-                    <div class="mt-40 pr-50 text-md-lh28 wow animate__animated animate__fadeInUp">Search all
-                        the open
-                        positions on the web. Get your own personalized salary estimate. Read reviews on over
-                        600,000 companies
-                        worldwide. The right job is out there.</div>
+                    <div class="mt-40 pr-50 text-md-lh28 wow animate__animated animate__fadeInUp">
+                        Hệ thống JobsNOW là nơi rất nhiều công ty/doanh nghiệp lựa chọn để đăng tin tuyển dụng. Vì thế
+                        bạn sẽ dễ dàng tìm thấy công việc phù hợp với mức lương hấp dẫn với mình.
+                    </div>
                     <div class="mt-40">
                         <div class="wow animate__animated animate__fadeInUp"><a class="btn btn-default"
-                                href="jobs-grid.html">Search Jobs</a><a class="btn btn-link"
-                                href="page-about.html">Learn More</a>
+                                href="{{ route('jobs.index') }}">Tìm Việc Ngay</a>
                         </div>
                     </div>
                 </div>
@@ -23,7 +22,7 @@
             <div class="col-lg-5 col-sm-12">
                 <div class="box-image-job">
                     <figure class="wow animate__animated animate__fadeIn">
-                        <img alt="joblist" src="assets/imgs/page/homepage1/img1.png">
+                        <img alt="joblist" src="{{ asset('frontend/assets/imgs/page/homepage1/img1.png') }}">
                     </figure>
                 </div>
             </div>

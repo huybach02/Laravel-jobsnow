@@ -103,6 +103,33 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $image
+ * @property string $title
+ * @property string $slug
+ * @property string $description
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Blog whereUpdatedAt($value)
+ */
+	class Blog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property int $user_id
  * @property string|null $image
  * @property string|null $full_name
@@ -344,6 +371,8 @@ namespace App\Models{
  * @property-read \App\Models\ProvinceCity|null $companyProvince
  * @property-read \App\Models\CommuneWard|null $companyWard
  * @property-read \App\Models\IndustryType $industry
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
  * @property-read \App\Models\OrganizationType $organization
  * @property-read \App\Models\TeamSize $teamSize
  * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
@@ -555,6 +584,33 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $image
+ * @property string $title
+ * @property string $subtitle
+ * @property string $button_name
+ * @property string $button_link
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection query()
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection whereButtonLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection whereButtonName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection whereSubtitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HeroSection whereUpdatedAt($value)
+ */
+	class HeroSection extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string $name
  * @property string $slug
  * @property int $status
@@ -689,13 +745,19 @@ namespace App\Models{
  * @property string $name
  * @property string $slug
  * @property int $status
+ * @property int $is_featured
+ * @property int $is_job_featured
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory query()
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereIsFeatured($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereIsJobFeatured($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|JobCategory whereStatus($value)
@@ -865,6 +927,8 @@ namespace App\Models{
  * @property int|null $administrative_region_id
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\District> $districts
  * @property-read int|null $districts_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Job> $jobs
+ * @property-read int|null $jobs_count
  * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ProvinceCity query()

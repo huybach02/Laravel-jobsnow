@@ -11,13 +11,13 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('job_categories', function (Blueprint $table) {
+    Schema::create('hero_sections', function (Blueprint $table) {
       $table->id();
-      $table->string('name');
-      $table->string('slug');
-      $table->boolean("status");
-      $table->boolean("is_featured")->default(1);
-      $table->boolean("is_job_featured")->default(0);
+      $table->text('image');
+      $table->text('title');
+      $table->text('subtitle');
+      $table->text('button_name');
+      $table->text('button_link');
       $table->timestamps();
     });
   }
@@ -27,6 +27,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('job_categories');
+    Schema::dropIfExists('hero_sections');
   }
 };

@@ -21,4 +21,9 @@ class ProvinceCity extends Model
   {
     return $this->hasMany(District::class, "province_code", "code");
   }
+
+  public function jobs()
+  {
+    return $this->hasMany(Job::class, "province", "code");
+  }
 }

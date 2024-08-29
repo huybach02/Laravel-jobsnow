@@ -376,3 +376,14 @@ input:checked + .slider:before {
     background-color: #15a0df !important;
     font-size: 12px;
 }
+
+.card-grid-2 {
+    height: 392px !important;
+    position: relative;
+}
+.btn-detail {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5%;
+}

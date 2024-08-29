@@ -48,6 +48,8 @@ Route::get("jobs/{slug}", [FrontendJobController::class, "show"])->name("jobs.sh
 Route::get("blogs", [BlogController::class, "index"])->name("blogs.index");
 Route::get("blogs/{slug}", [BlogController::class, "show"])->name("blogs.show");
 
+Route::get('/api/jobs/{categoryId}', [HomeController::class, 'fetchJobs'])->name('api.jobs');
+
 // Candidate
 Route::prefix("candidate")->as("candidate.")->middleware(["auth", "verified", "role:candidate"])->group(function () {
   Route::get('dashboard', [CandidateDashboardController::class, "index"])->name('dashboard');

@@ -40,4 +40,9 @@ class Company extends Model
   {
     return $this->belongsTo(TeamSize::class, "team_size_id", "id");
   }
+
+  public function jobs()
+  {
+    return $this->hasMany(Job::class, "company_id", "id");
+  }
 }

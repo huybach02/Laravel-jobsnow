@@ -111,6 +111,20 @@
                     class="d-flex align-items-center"><i class="zmdi zmdi-collection-plus"></i><span
                         class="font-bold">QL
                         Tin Tức</span> </a>
+            </li>
+            <li class="{{ setActive(['admin.home-section.*', 'admin.featured-categories-section.*']) }}">
+                <a href="javascript:void(0);" class="menu-toggle d-flex align-items-center">
+                    <i class="zmdi zmdi-home"></i>
+                    <span class="font-bold">QL Trang Chủ</span>
+                </a>
+                <ul class="ml-menu">
+                    <li class="{{ setSubActive(['admin.home-section.*']) }}"> <a
+                            href="{{ route('admin.home-section.index') }}">Phần mở đầu</a></li>
+                    <li class="{{ setSubActive(['admin.featured-categories-section.*']) }}"> <a
+                            href="{{ route('admin.featured-categories-section.index') }}">Danh mục nổi bật</a></li>
+
+                </ul>
+            </li>
         </ul>
     </div>
     <!-- #Menu -->

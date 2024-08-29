@@ -148,13 +148,28 @@
                         _token: "{{ csrf_token() }}"
                     },
                     success: function(data) {
-                        flasher.success(data.message, "Thành công")
+                        if (data.success) {
+                            flasher.success(data.message, "Thành công")
+                        } else {
+                            sessionStorage.setItem('flasherMessage', data.message);
+                            sessionStorage.setItem('flasherType', 'error');
+                            window.location.reload();
+                        }
                     },
                     error: function(xhr, status, error) {
                         console.log(error);
                     }
                 })
             })
+
+            let flasherMessage = sessionStorage.getItem('flasherMessage');
+            let flasherType = sessionStorage.getItem('flasherType');
+
+            if (flasherMessage) {
+                flasher[flasherType](flasherMessage, "Cảnh báo");
+                sessionStorage.removeItem('flasherMessage');
+                sessionStorage.removeItem('flasherType');
+            }
         })
     </script>
 
