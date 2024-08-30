@@ -75,7 +75,7 @@
                                             <td style="text-align: start">
                                                 <label class="switch">
                                                     <input class="change-status" type="checkbox"
-                                                        @checked($job->status) data-id="{{ $job->id }}"
+                                                        @checked($job->status == 1 && $job->is_blocked == 0) data-id="{{ $job->id }}"
                                                         data-url="{{ route('company.jobs.change-status') }}">
                                                     <span class="slider round"></span>
                                                 </label>

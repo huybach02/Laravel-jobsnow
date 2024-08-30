@@ -162,6 +162,34 @@
                 })
             })
 
+            $("body").on('change', ".change-blocked", function() {
+                let id = $(this).data('id')
+                let url = $(this).data('url')
+                let value = $(this).val()
+
+                $.ajax({
+                    url: url,
+                    method: "PUT",
+                    data: {
+                        id: id,
+                        value: value,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            flasher.success(data.message, "Thành công")
+                        } else {
+                            sessionStorage.setItem('flasherMessage', data.message);
+                            sessionStorage.setItem('flasherType', 'error');
+                            window.location.reload();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                })
+            })
+
             let flasherMessage = sessionStorage.getItem('flasherMessage');
             let flasherType = sessionStorage.getItem('flasherType');
 

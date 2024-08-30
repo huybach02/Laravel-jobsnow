@@ -23,7 +23,7 @@ class HomeController extends Controller
     $hero = HeroSection::first();
     $jobCategories = JobCategory::where('is_featured', 1)->get();
     $jobFeaturedCategories = JobCategory::where('is_job_featured', 1)->take(10)->get();
-    $jobCount = Job::where(["status" => 1])->where("deadline", ">=", date("Y-m-d"))->count();
+    $jobCount = Job::where(["status" => 1, "is_blocked" => 0])->where("deadline", ">=", date("Y-m-d"))->count();
     $companyCount = Company::where(["status" => 1, "profile_completed" => 1])->count();
     $candidateCount = Candidate::where(["status" => 1, "profile_completed" => 1])->count();
     $jobCategoryCount = JobCategory::where(["status" => 1])->count();
@@ -32,7 +32,7 @@ class HomeController extends Controller
 
     foreach ($jobCategories as $category) {
       $category->jobs_count = DB::table('jobs')
-        ->where(["status" => 1])->where("deadline", ">=", date("Y-m-d"))
+        ->where(["status" => 1, "is_blocked" => 0])->where("deadline", ">=", date("Y-m-d"))
         ->whereRaw("FIND_IN_SET(?, jobs.job_category)", [$category->id])
         ->count();
     }
@@ -42,7 +42,7 @@ class HomeController extends Controller
 
   public function fetchJobs(Request $request, $categoryId)
   {
-    $jobs = Job::whereRaw("FIND_IN_SET(?, job_category)", [$categoryId])->where("deadline", ">=", date("Y-m-d"))->where("is_featured", 1)->where("status", 1)->inRandomOrder()->take(12)->get();
+    $jobs = Job::whereRaw("FIND_IN_SET(?, job_category)", [$categoryId])->where("deadline", ">=", date("Y-m-d"))->where("is_featured", 1)->where("status", 1)->where("is_blocked", 0)->inRandomOrder()->take(12)->get();
 
     if ($request->ajax()) {
       $html = view('frontend.home.featured-job-list', compact('jobs'))->render();

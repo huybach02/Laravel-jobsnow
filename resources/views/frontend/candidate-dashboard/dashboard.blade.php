@@ -62,21 +62,43 @@
 
                         <div class="dashboard_overview">
                             <div class="row">
-                                <div class="col-lg-4 col-md-6">
+                                <div class="col-lg-5 col-md-6">
                                     <div class="dash_overview_item bg-info-subtle">
-                                        <h2>12 <span>job applied</span></h2>
-                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                        <span class="icon">
+                                            @if ($candidateInfo->profile_completed == 1)
+                                                <i class="fas fa-check-circle"
+                                                    style="color: rgb(20, 174, 20); font-size: 30px"></i>
+                                            @else
+                                                <i class="fas fa-times-circle"
+                                                    style="color: rgb(246, 27, 27); font-size: 30px"></i>
+                                            @endif
+                                        </span>
+                                        <h2>
+                                            <h6
+                                                style="color: {{ $candidateInfo->profile_completed == 1 ? 'rgb(20, 174, 20)' : 'rgb(246, 27, 27)' }}; margin-top: 10px">
+                                                {{ $candidateInfo->profile_completed == 1 ? 'Đã' : 'Chưa' }} hoàn thành
+                                                thông tin
+                                                ứng viên</h6>
+                                        </h2>
+
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6">
+                                <div class="col-lg-6 col-md-6"></div>
+                                <div class="col-lg-6 col-md-6">
                                     <div class="dash_overview_item bg-danger-subtle">
-                                        <h2>12 <span>job applied</span></h2>
+                                        <h2>{{ $jobCount }} <span>Tin tuyển dụng đã ứng tuyển</span></h2>
                                         <span class="icon"><i class="fas fa-briefcase"></i></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="dash_overview_item bg-success-subtle">
+                                        <h2>{{ $jobAcceptedCount }} <span>Tin tuyến dụng được chấp nhận</span></h2>
+                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
                                     <div class="dash_overview_item bg-warning-subtle">
-                                        <h2>12 <span>job applied</span></h2>
+                                        <h2>{{ $jobBookmarkCount }} <span>Tin tuyến dụng đã lưu</span></h2>
                                         <span class="icon"><i class="fas fa-briefcase"></i></span>
                                     </div>
                                 </div>

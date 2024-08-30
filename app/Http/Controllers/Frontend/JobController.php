@@ -223,12 +223,20 @@ class JobController extends Controller
   public function changeStatus(Request $request)
   {
     $job = Job::findOrFail($request->id);
-    $job->status = $request->status == "true" ? 1 : 0;
-    $job->save();
+
+    if ($job->is_blocked == 0) {
+      $job->status = $request->status == "true" ? 1 : 0;
+      $job->save();
+
+      return response([
+        "success" => true,
+        "message" => "Cập nhật trạng thái thành công!",
+      ]);
+    }
 
     return response([
-      "success" => true,
-      "message" => "Cập nhật trạng thái thành công!",
+      "success" => false,
+      "message" => "Tin tuyến dụng đã bị chặn do vi phạm chính sách!",
     ]);
   }
 

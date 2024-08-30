@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\SalaryStructureController;
 use App\Http\Controllers\Admin\SoftSkillController;
 use App\Http\Controllers\Admin\TeamSizeController;
 use App\Http\Controllers\Admin\WorkModeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->as('admin.')->group(function () {
@@ -159,5 +160,9 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::get("featured-categories-section", [HomeController::class, "featuredCategories"])->name("featured-categories-section.index");
     Route::put("featured-categories-section/change-status", [HomeController::class, "featuredCategoriesChangeStatus"])->name("featured-categories-section.change-status");
     Route::put("featured-categories-section/change-status-job-featured", [HomeController::class, "featuredCategoriesChangeStatusJobFeatured"])->name("featured-categories-section.change-status-job-featured");
+
+    // Post
+    Route::get("posts", [PostController::class, "index"])->name("posts.index");
+    Route::put("posts/change-status", [PostController::class, "changeStatus"])->name("posts.change-status");
   });
 });

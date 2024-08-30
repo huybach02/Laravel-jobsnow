@@ -44,7 +44,7 @@ class FrontendJobController extends Controller
     ])->get();
 
     $query = Job::query();
-    $query = Job::where(["status" => 1])->where("deadline", ">=", date("Y-m-d"));
+    $query = Job::where(["status" => 1, "is_blocked" => 0])->where("deadline", ">=", date("Y-m-d"));
 
     if ($request->has("search") && $request->search != "") {
       $query->where('title', 'like', '%' . $request->search . '%');
@@ -94,7 +94,7 @@ class FrontendJobController extends Controller
 
   public function show($slug)
   {
-    $job = Job::where(["status" => 1])->where("slug", $slug)->first();
+    $job = Job::where(["status" => 1, "is_blocked" => 0])->where("slug", $slug)->first();
     $similarJobs = Job::where(["status" => 1])->where("slug", "!=", $slug)->where("deadline", ">=", date("Y-m-d"))->where("company_id", $job->company_id)->get();
     $countJobByCompany = Job::where(["status" => 1])->where("deadline", ">=", date("Y-m-d"))->where("company_id", $job->company_id)->count();
     $candidate = auth()->check() ? Candidate::where('user_id', auth()->user()->id)->first() : null;
@@ -102,6 +102,8 @@ class FrontendJobController extends Controller
     if (!$job) {
       abort(404);
     }
+
+    $job->increment('view_count');
 
     return view('frontend.pages.jobs-show', compact('job', 'similarJobs', 'countJobByCompany', 'candidate'));
   }

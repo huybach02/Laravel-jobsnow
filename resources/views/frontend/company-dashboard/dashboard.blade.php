@@ -59,20 +59,90 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-info-subtle">
-                                        <h2>12 <span>job applied</span></h2>
-                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                        <h2>{{ $companyInfo->limit_post }} <span>Tin tuyển dụng tối đa</span></h2>
+                                        <span class="icon"><i class="fas fa-newspaper"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
+                                    <div class="dash_overview_item bg-info-subtle">
+                                        <h2>{{ $companyInfo->used_post }} <span>Tin tuyển dụng đã dùng</span></h2>
+                                        <span class="icon"><i class="fas fa-newspaper"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6"></div>
+                                <div class="col-lg-5 col-md-6">
                                     <div class="dash_overview_item bg-danger-subtle">
-                                        <h2>12 <span>job applied</span></h2>
-                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                        <h2>{{ $companyInfo->limit_featured_post }} <span>Tin tuyển dụng nổi bật tối
+                                                đa</span></h2>
+                                        <span class="icon"><i class="fas fa-star"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="dash_overview_item bg-danger-subtle">
+                                        <h2>{{ $companyInfo->used_featured_post }} <span>Tin tuyển dụng nổi bật đã
+                                                dùng</span></h2>
+                                        <span class="icon"><i class="fas fa-star"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="dash_overview_item bg-warning-subtle">
-                                        <h2>12 <span>job applied</span></h2>
-                                        <span class="icon"><i class="fas fa-briefcase"></i></span>
+                                        <span class="icon">
+                                            @if ($companyInfo->profile_completed == 1)
+                                                <i class="fas fa-check-circle"
+                                                    style="color: rgb(20, 174, 20); font-size: 30px"></i>
+                                            @else
+                                                <i class="fas fa-times-circle"
+                                                    style="color: rgb(246, 27, 27); font-size: 30px"></i>
+                                            @endif
+                                        </span>
+                                        <h2>
+                                            <h6
+                                                style="color: {{ $companyInfo->profile_completed == 1 ? 'rgb(20, 174, 20)' : 'rgb(246, 27, 27)' }}; margin-top: 10px">
+                                                {{ $companyInfo->profile_completed == 1 ? 'Đã' : 'Chưa' }} hoàn thành
+                                                thông tin
+                                                doanh nghiệp</h6>
+                                        </h2>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="dash_overview_item bg-warning-subtle">
+                                        <span class="icon">
+                                            @if ($companyInfo->is_profile_verified == 1)
+                                                <i class="fas fa-check-circle"
+                                                    style="color: rgb(20, 174, 20); font-size: 30px"></i>
+                                            @else
+                                                <i class="fas fa-times-circle"
+                                                    style="color: rgb(246, 27, 27); font-size: 30px"></i>
+                                            @endif
+                                        </span>
+                                        <h2>
+                                            <h6
+                                                style="color: {{ $companyInfo->is_profile_verified == 1 ? 'rgb(20, 174, 20)' : 'rgb(246, 27, 27)' }}; margin-top: 10px">
+                                                {{ $companyInfo->is_profile_verified == 1 ? 'Hiển thị' : 'Không hiển thị' }}
+                                                Logo hồ sơ đã xác thực trong phần hồ sơ</h6>
+                                        </h2>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="dash_overview_item bg-warning-subtle">
+                                        <span class="icon">
+                                            @if ($companyInfo->visibility == 1)
+                                                <i class="fas fa-check-circle"
+                                                    style="color: rgb(20, 174, 20); font-size: 30px"></i>
+                                            @else
+                                                <i class="fas fa-times-circle"
+                                                    style="color: rgb(246, 27, 27); font-size: 30px"></i>
+                                            @endif
+                                        </span>
+                                        <h2>
+                                            <h6
+                                                style="color: {{ $companyInfo->visibility == 1 ? 'rgb(20, 174, 20)' : 'rgb(246, 27, 27)' }}; margin-top: 10px">
+                                                {{ $companyInfo->visibility == 1 ? 'Hiển thị' : 'Không hiển thị' }}
+                                                trong mục doanh nghiệp nổi bật</h6>
+                                        </h2>
+
                                     </div>
                                 </div>
                             </div>

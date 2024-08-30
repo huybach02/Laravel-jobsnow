@@ -45,6 +45,7 @@ return new class extends Migration
       $table->integer("view_count")->default(0);
       $table->boolean("is_featured")->default(0);
       $table->boolean("status")->default(1);
+      $table->boolean("is_blocked")->default(0);
 
       $table->timestamps();
     });
