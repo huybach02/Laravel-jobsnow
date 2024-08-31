@@ -9,6 +9,11 @@ use Illuminate\Support\Str;
 
 class ProfessionController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware("permission:Truy cập mục QL TT Ứng Viên");
+  }
+
   /**
    * Display a listing of the resource.
    */

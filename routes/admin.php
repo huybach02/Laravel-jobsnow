@@ -26,6 +26,8 @@ use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
 use App\Http\Controllers\Admin\ProvinceCityController;
+use App\Http\Controllers\Admin\RolePermissionController;
+use App\Http\Controllers\Admin\RoleUserController;
 use App\Http\Controllers\Admin\SalaryStructureController;
 use App\Http\Controllers\Admin\SoftSkillController;
 use App\Http\Controllers\Admin\TeamSizeController;
@@ -164,5 +166,11 @@ Route::prefix('admin')->as('admin.')->group(function () {
     // Post
     Route::get("posts", [PostController::class, "index"])->name("posts.index");
     Route::put("posts/change-status", [PostController::class, "changeStatus"])->name("posts.change-status");
+
+    // Role Permission
+    Route::resource("roles", RolePermissionController::class);
+
+    // Role User
+    Route::resource("role-user", RoleUserController::class);
   });
 });

@@ -9,6 +9,11 @@ use Illuminate\Support\Str;
 
 class ExperienceController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware("permission:Truy cập mục QL TT Ứng Viên|Truy cập mục QL TT Tuyển Dụng");
+  }
+
   /**
    * Display a listing of the resource.
    */

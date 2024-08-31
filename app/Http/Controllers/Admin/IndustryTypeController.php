@@ -10,6 +10,10 @@ use Illuminate\Support\Str;
 
 class IndustryTypeController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware("permission:Truy cập mục QL Thông Tin Tổ Chức");
+  }
   // use Searchable;
 
   /**

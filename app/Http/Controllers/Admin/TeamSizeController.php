@@ -9,6 +9,11 @@ use Illuminate\Support\Str;
 
 class TeamSizeController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware("permission:Truy cập mục QL Thông Tin Tổ Chức");
+  }
+
   /**
    * Display a listing of the resource.
    */

@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class DistrictController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware("permission:Truy cập mục QL Địa Điểm");
+  }
+
   /**
    * Display a listing of the resource.
    */

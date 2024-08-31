@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware("permission:Truy cập mục QL Tin Tuyển Dụng");
+  }
+
   public function index()
   {
     $jobs = Job::withCount("applications")->orderBy("id", "desc")->get();

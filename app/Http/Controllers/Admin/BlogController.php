@@ -12,6 +12,11 @@ class BlogController extends Controller
 {
   use FileUploadTrait;
 
+  public function __construct()
+  {
+    $this->middleware("permission:Truy cập mục QL Tin Tức");
+  }
+
   /**
    * Display a listing of the resource.
    */

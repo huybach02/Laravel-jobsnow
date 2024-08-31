@@ -131,3 +131,16 @@ function isApplied($jobId)
   }
   return false;
 }
+
+function canAccess($permissions)
+{
+  if (!auth()->check()) {
+    return false;
+  }
+
+  $checkAccess = auth()->guard("admin")->user()->hasAnyPermission($permissions);
+
+  $superAdmin = auth()->guard("admin")->user()->hasRole("Quản trị viên hệ thống");
+
+  return $checkAccess || $superAdmin;
+}

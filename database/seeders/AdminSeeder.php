@@ -13,10 +13,13 @@ class AdminSeeder extends Seeder
    */
   public function run(): void
   {
-    $admin = new Admin();
-    $admin->name = "Admin";
-    $admin->email = "admin@gmail.com";
-    $admin->password = bcrypt("password");
-    $admin->save();
+    // $admin = new Admin();
+    // $admin->name = "Admin";
+    // $admin->email = "admin@gmail.com";
+    // $admin->password = bcrypt("password");
+    // $admin->save();
+
+    $admin = Admin::find(1);
+    $admin->assignRole("Quản trị viên hệ thống");
   }
 }

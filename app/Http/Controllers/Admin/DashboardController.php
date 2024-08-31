@@ -14,6 +14,11 @@ use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware("permission:Xem thống kê");
+  }
+
   public function index(Request $request)
   {
     $selectedYear = $request->input('year', date('Y')); // Mặc định là năm hiện tại

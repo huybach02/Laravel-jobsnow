@@ -8,6 +8,20 @@ use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('permission:Xem danh sách Gói Dịch Vụ')->only('index');
+
+    // Áp dụng middleware cho phương thức create và store
+    $this->middleware('permission:Thêm mới Gói Dịch Vụ')->only(['create', 'store']);
+
+    // Áp dụng middleware cho phương thức edit và update
+    $this->middleware('permission:Sửa Gói Dịch Vụ')->only(['edit', 'update']);
+
+    // Áp dụng middleware cho phương thức destroy
+    $this->middleware('permission:Xoá Gói Dịch Vụ')->only('destroy');
+  }
+
   /**
    * Display a listing of the resource.
    */

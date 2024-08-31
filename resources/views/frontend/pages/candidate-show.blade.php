@@ -375,7 +375,8 @@
                                             {{ $candidate->fb_link }}</a></li>
                                 @endif
                             </ul>
-                            <div class="mt-30"><a class="btn btn-send-message" href="page-contact.html">Send Message</a>
+                            <div class="mt-30"><a class="btn btn-send-message"
+                                    href="mailto:{{ $candidate->email }}">Gửi Email liên hệ</a>
                             </div>
                         </div>
                     </div>

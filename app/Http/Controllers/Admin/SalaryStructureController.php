@@ -9,6 +9,11 @@ use Illuminate\Support\Str;
 
 class SalaryStructureController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware("permission:Truy cập mục QL TT Tuyển Dụng");
+  }
+
   /**
    * Display a listing of the resource.
    */
